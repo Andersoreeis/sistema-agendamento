@@ -17,12 +17,10 @@ public class Especialidade {
 		}
 
 	}
-	
 
 	public String getNome() {
 		return nome;
 	}
-	
 
 	public void setDescricao(String descricao) {
 		if (descricao.length() >= 10) {
@@ -32,10 +30,9 @@ public class Especialidade {
 		}
 	}
 	
+
 	public String getDescricao() {
 		return descricao;
 	}
-	
-	
-	
+
 }
