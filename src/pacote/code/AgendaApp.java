@@ -151,11 +151,7 @@ public class AgendaApp {
 //			System.out.println(medico2.getEmail());
 //			b++;
 //		}
-		int notas[] = {6,7,8,9};
-		double preços[] = new double[3];
-		preços[0] = 1.0;
-		preços[1] = 2.0;
-		preços[3] = 3.0;
+	
 		
 				
 	

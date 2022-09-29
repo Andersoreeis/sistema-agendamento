@@ -15,6 +15,7 @@ public class Testeobjetos {
 		Especialidade e2 = new Especialidade("Gastroenterologia", "Cuida do Fígado");
 		Especialidade e3 = new Especialidade();
 		e3.setNome("Qualquer Nome");
+                              
 
 		// Criação do ArrayList
 		ArrayList<Especialidade> especialidades = new ArrayList<>();
@@ -47,7 +48,13 @@ public class Testeobjetos {
 			
 		}
 		AgendaApp.main(args);
-		System.out.println("----" + PlanoDeSaude.getQuantidade());
+		System.out.println("Total de plano de Saúdes: " + PlanoDeSaude.getQuantidade());
+                  System.out.println("Total de Especialidades: " + e1.getContador());
+                  
+                  System.out.println(e1.getCodigo() + " - " + e1.getNome());
+                  System.out.println(e2.getCodigo() + " - " + e2.getNome());
+                  System.out.println(e3.getCodigo() + " - " + e3.getNome());
+
 
 	}
 }
