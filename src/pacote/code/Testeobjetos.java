@@ -1,6 +1,7 @@
 package pacote.code;
 
 import java.util.ArrayList;
+import pacote.code.dao.EspecialidadeDAO;
 
 import pacote.code.model.Especialidade;
 import pacote.code.model.PlanoDeSaude;
@@ -51,9 +52,11 @@ public class Testeobjetos {
 		System.out.println("Total de plano de Saúdes: " + PlanoDeSaude.getQuantidade());
                   System.out.println("Total de Especialidades: " + e1.getContador());
                   
+                
                   System.out.println(e1.getCodigo() + " - " + e1.getNome());
                   System.out.println(e2.getCodigo() + " - " + e2.getNome());
                   System.out.println(e3.getCodigo() + " - " + e3.getNome());
+                  
 
 
 	}

@@ -2,6 +2,7 @@ package pacote.code;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import pacote.code.dao.EspecialidadeDAO;
 
 import pacote.code.model.Agenda;
 import pacote.code.model.Endereco;
@@ -20,6 +21,26 @@ public class AgendaApp {
 		Especialidade especialidade3 = new Especialidade();
 		Especialidade especialidade4 = new Especialidade();
 		Especialidade especialidade5 = new Especialidade();
+                // Criando Objetos de Lista!
+                
+                // gravando 
+                EspecialidadeDAO.gravar(especialidade1);
+                EspecialidadeDAO.gravar(especialidade2);
+                EspecialidadeDAO.gravar(especialidade3);
+                EspecialidadeDAO.gravar(especialidade4);
+                
+               
+                 Especialidade correto = new Especialidade("Teste", "Teste");
+                 EspecialidadeDAO.atualizar(correto);
+                 correto.setCodigo(especialidade4.getCodigo());
+
+                
+                 System.out.println( "Nova especialidade" + EspecialidadeDAO.getEspecialidade(especialidade4.getCodigo()).getNome());
+                 
+                 
+                  EspecialidadeDAO.excluirEspecialidade(especialidade1.getCodigo());
+                  System.out.println("Tamanho " + EspecialidadeDAO.getEspecialidades().size());
+                   System.out.println(EspecialidadeDAO.getEspecialidade(2).getNome());
 
 		PlanoDeSaude planodesaude1 = new PlanoDeSaude();
 		PlanoDeSaude planodesaude2 = new PlanoDeSaude();
