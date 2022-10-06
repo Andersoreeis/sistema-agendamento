@@ -1,4 +1,4 @@
-package pacote.code;
+package pacode.code.teste;
 
 import java.util.ArrayList;
 

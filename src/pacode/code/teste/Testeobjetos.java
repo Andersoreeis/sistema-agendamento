@@ -1,4 +1,4 @@
-package pacote.code;
+package pacode.code.teste;
 
 import java.util.ArrayList;
 import pacote.code.dao.EspecialidadeDAO;
@@ -7,9 +7,18 @@ import pacote.code.model.Especialidade;
 import pacote.code.model.PlanoDeSaude;
 
 public class Testeobjetos {
+    // vetores de vetores
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+                
+                
+        int a[][] = {
+                {1,2,3},
+                {4,5,6},
+                {6,7,8}
+        };
+            System.out.println(a[1][1]);
 		
 		// Criação de Objetos
 		Especialidade e1 = new Especialidade("Cardiologista", "Cuida do coração");
