@@ -1,12 +1,12 @@
 package pacode.code.teste;
 
-import pacode.code.frame.Jframe;
+import pacode.code.frame.HomeFrame;
 
 
 
 public class AgendaApp {
 	public static void main(String[] args) {
-            Jframe tela = new Jframe();
+            HomeFrame tela = new HomeFrame();
             tela.setVisible(true);
             
    }

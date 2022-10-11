@@ -5,6 +5,7 @@
 package pacote.code.dao;
 
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import pacote.code.model.Especialidade;
 
 /**
@@ -39,8 +40,9 @@ public class EspecialidadeDAO {
         }
 
     }
+
     // criar uma lista inicial de especialidades
-    public static void criarListaDeEspecialidades(){
+    public static void criarListaDeEspecialidades() {
         Especialidade e1 = new Especialidade("Cardiologia", "Cuida do coração.");
         Especialidade e2 = new Especialidade("Demartologista", "Cuida da pele.");
         Especialidade e3 = new Especialidade("Gastrologista", "Cuida da barriga.");
@@ -51,17 +53,34 @@ public class EspecialidadeDAO {
         especialidades.add(e4);
     }
 
+    public static DefaultTableModel getEspecialidadesModel() {
+        
+        String[] titulos = {"CODIGO", "ESPECIALIDADE", "DESCRIÇÃO"};
+        String[][] dados = new String[especialidades.size()][3];
+
+        int i = 0;
+
+        for (Especialidade e : especialidades) {
+            dados[i][0] = e.getCodigo().toString();
+            dados[i][1] = e.getNome();
+            dados[i][2] = e.getDescricao();
+            i++;
+        }
+        DefaultTableModel model = new DefaultTableModel(dados, titulos);
+        return model;
+    }
+
     public static void atualizar(Especialidade especialidadeAtualizada) {
         for (Especialidade lista : especialidades) {
             if (especialidadeAtualizada.getCodigo() == lista.getCodigo()) {
-                
+
 //                lista.setCodigo(especialidadeAtualizada.getCodigo());
 //                lista.setDescricao(especialidadeAtualizada.getDescricao());
 //                lista.setNome(especialidadeAtualizada.getNome()); 
-                  int posicao = especialidades.indexOf(lista);
+                int posicao = especialidades.indexOf(lista);
 
                 especialidades.set(posicao, especialidadeAtualizada);
-                
+
             }
         }
     }

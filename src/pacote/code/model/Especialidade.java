@@ -3,7 +3,7 @@ package pacote.code.model;
 import javax.swing.JOptionPane;
 
 public class Especialidade {
-    private static int contador = 0;
+    private static int contador = 100;
     private Integer codigo;
     private String nome;
     private String descricao;
