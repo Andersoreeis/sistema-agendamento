@@ -4,6 +4,8 @@
  */
 package pacode.code.frame;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import pacote.code.dao.EspecialidadeDAO;
 
@@ -19,6 +21,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
     public EspecialidadePanel() {
         initComponents();
         EspecialidadeDAO.criarListaDeEspecialidades();
+        ajustarTabela();
          prencherTabela();
     }
 
@@ -44,6 +47,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Especialidades", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 102, 0))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
+        tabelaEspecialidades.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
         tabelaEspecialidades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -62,21 +66,17 @@ public class EspecialidadePanel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 22, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         add(jPanel1);
-        jPanel1.setBounds(0, 10, 810, 319);
+        jPanel1.setBounds(0, 10, 810, 350);
 
         btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/excluir (1).png"))); // NOI18N
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,11 +85,11 @@ public class EspecialidadePanel extends javax.swing.JPanel {
             }
         });
         add(btnLimpar);
-        btnLimpar.setBounds(600, 360, 57, 33);
+        btnLimpar.setBounds(630, 370, 57, 33);
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/caneta.png"))); // NOI18N
         add(btnEditar);
-        btnEditar.setBounds(660, 360, 57, 33);
+        btnEditar.setBounds(690, 370, 57, 33);
 
         btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/plus.png"))); // NOI18N
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -98,15 +98,42 @@ public class EspecialidadePanel extends javax.swing.JPanel {
             }
         });
         add(btnAdicionar);
-        btnAdicionar.setBounds(720, 360, 57, 33);
+        btnAdicionar.setBounds(750, 370, 57, 33);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         // TODO add your handling code here:
+        Integer linha = tabelaEspecialidades.getSelectedRow();
+        if(linha != -1){
+           escluirEspecialidade();
+        }else{
+            JOptionPane.showMessageDialog(this, 
+                    "Nenhuma linha selecionada, Por favor Selecione!!", 
+                    "Atenção", JOptionPane.WARNING_MESSAGE, 
+                    null
+            
+            );
+        }
+        
+        
     }//GEN-LAST:event_btnLimparActionPerformed
-
+    private void escluirEspecialidade(){
+    
+        Integer linha = tabelaEspecialidades.getSelectedRow();
+        Integer coluna = 0;
+        String codigoString = tabelaEspecialidades.getValueAt(linha, coluna).toString();
+        Integer codigo = Integer.valueOf(codigoString);
+       int resposta =  JOptionPane.showConfirmDialog(this, "Você deseja escluir essa especialidade", "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        EspecialidadeDAO.excluirEspecialidade(codigo);
+        prencherTabela();
+    }
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         // TODO add your handling code here:
+        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true);
+        especialidadeDialog.setVisible(true);
+        prencherTabela();
+      
+        
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
 
@@ -122,7 +149,18 @@ public class EspecialidadePanel extends javax.swing.JPanel {
     private void prencherTabela() {
        
         tabelaEspecialidades.setModel(EspecialidadeDAO.getEspecialidadesModel());
+        ajustarTabela();
 
+    }
+    private void ajustarTabela(){
+        tabelaEspecialidades.getTableHeader().setReorderingAllowed(false);
+        tabelaEspecialidades.setDefaultEditor(Object.class, null);
+        tabelaEspecialidades.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tabelaEspecialidades.getColumnModel().getColumn(1).setPreferredWidth(300);
+        tabelaEspecialidades.getColumnModel().getColumn(2).setPreferredWidth(395);
+        tabelaEspecialidades.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+       
+        
     }
 
 }
