@@ -11,26 +11,23 @@ public class Especialidade {
 
     public Especialidade(String nome) {
         this.nome = nome;
-        this.contador++;
-        this.codigo = contador;
+        gerarCodigo();
     }
 
     public Especialidade(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
-        this.contador++;
-        this.codigo = contador;
+         gerarCodigo();
     }
 
     public Especialidade() {
-        this.contador++;
-        this.codigo = contador;
+         gerarCodigo();
 
     }
 
     // Métodos de acesso aos atributos
     public void setNome(String nome) {
-        if (nome.length() >= 3) {
+        if (nome.length() >= 4) {
             this.nome = nome;
         } else {
             JOptionPane.showMessageDialog(null, nome + " Não é um nome válido \n deve conter pelo menos 3 letras");
@@ -66,6 +63,10 @@ public class Especialidade {
 
     public Integer getCodigo() {
         return codigo;
+    }
+    public void gerarCodigo(){
+        this.contador++;
+        this.codigo = contador;
     }
     
     

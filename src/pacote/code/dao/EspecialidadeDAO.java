@@ -80,6 +80,7 @@ public class EspecialidadeDAO {
                 int posicao = especialidades.indexOf(lista);
 
                 especialidades.set(posicao, especialidadeAtualizada);
+                break;
 
             }
         }

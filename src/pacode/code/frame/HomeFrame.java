@@ -328,7 +328,7 @@ public class HomeFrame extends javax.swing.JFrame {
     private void btnsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsairActionPerformed
         // TODO add your handling code here:
      
-           
+           dispose();
     }//GEN-LAST:event_btnsairActionPerformed
 
     private void btnAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaActionPerformed
@@ -359,7 +359,7 @@ public class HomeFrame extends javax.swing.JFrame {
           btnHome.setVisible(true);
           jpanelHome.setVisible(false);
           especialidadesPanel.setVisible(true);
-          EspecialidadeDAO.criarListaDeEspecialidades();
+          
     }//GEN-LAST:event_btnEspecialidadeActionPerformed
 
     private void btnPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanoDeSaudeActionPerformed

@@ -4,6 +4,7 @@
  */
 package pacode.code.frame;
 
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import pacote.code.dao.EspecialidadeDAO;
 import pacote.code.model.Especialidade;
@@ -13,13 +14,40 @@ import pacote.code.model.Especialidade;
  * @author 22282173
  */
 public class EspecialidadeDialog extends javax.swing.JDialog {
-
-    /**
-     * Creates new form EspecialidadeDialog
-     */
-    public EspecialidadeDialog(java.awt.Frame parent, boolean modal) {
+        Especialidade especialidade;
+        
+        
+    public EspecialidadeDialog(
+            java.awt.Frame parent,
+            boolean modal,
+            Especialidade e)
+    {
         super(parent, modal);
         initComponents();
+          especialidade = e;
+           
+          prencherFormulario();
+    }
+    private void prencherFormulario(){
+        jlabelTitleDialog.setText("Especialidade Editar");
+        jlabelImgLogo.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource(/pacode/code/frame/caneta.png)));
+        
+        jtextfieldCodigo.setText(especialidade.getCodigo().toString());
+        jtextfieldNomeEspecialidade.setText(especialidade.getNome());
+        jtextfieldDescricaoEspecialidade.setText(especialidade.getDescricao());
+  
+        
+    }
+    
+    
+        public EspecialidadeDialog(
+            java.awt.Frame parent,
+            boolean modal)
+    {
+        super(parent, modal);
+        initComponents();
+      
+        
     }
 
     /**
@@ -33,7 +61,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
 
         jpanelHeaderDialog = new javax.swing.JPanel();
         jlabelTitleDialog = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jlabelImgLogo = new javax.swing.JLabel();
         jpanelMainDialog = new javax.swing.JPanel();
         jtextfieldCodigo = new javax.swing.JTextField();
         jtextfieldNomeEspecialidade = new javax.swing.JTextField();
@@ -59,9 +87,9 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         jpanelHeaderDialog.add(jlabelTitleDialog);
         jlabelTitleDialog.setBounds(20, 20, 290, 40);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/adicionarCoisas.png"))); // NOI18N
-        jpanelHeaderDialog.add(jLabel4);
-        jLabel4.setBounds(320, 20, 40, 40);
+        jlabelImgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/adicionarCoisas.png"))); // NOI18N
+        jpanelHeaderDialog.add(jlabelImgLogo);
+        jlabelImgLogo.setBounds(320, 20, 40, 40);
 
         getContentPane().add(jpanelHeaderDialog);
         jpanelHeaderDialog.setBounds(0, 0, 800, 70);
@@ -121,6 +149,11 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
 
         btnCancelarDialog.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelarDialog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/excluir (4).png"))); // NOI18N
+        btnCancelarDialog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarDialogActionPerformed(evt);
+            }
+        });
         jpanelMainDialog.add(btnCancelarDialog);
         btnCancelarDialog.setBounds(570, 253, 50, 40);
 
@@ -145,15 +178,20 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
 
     private void btnSalvarDiaologActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDiaologActionPerformed
         // TODO add your handling code here:
-        Especialidade especialidade = new Especialidade();
-        especialidade.setNome(jtextfieldNomeEspecialidade.getText());
-        especialidade.setDescricao(jtextfieldDescricaoEspecialidade.getText());
+        Especialidade novaEspecialidade = new Especialidade();
+        novaEspecialidade.setNome(jtextfieldNomeEspecialidade.getText());
+        novaEspecialidade.setDescricao(jtextfieldDescricaoEspecialidade.getText());
         // Gravar o objeto, através do dao
-        EspecialidadeDAO.gravar(especialidade);
-        //JOptionPane.showMessageDialog(this, "Gravado Com sucesso", " Especialidade", JOptionPane.INFORMATION_MESSAGE);
+        EspecialidadeDAO.gravar(novaEspecialidade);
+        JOptionPane.showMessageDialog(this, "Gravado Com sucesso", " Especialidade", JOptionPane.INFORMATION_MESSAGE);
         dispose();
-        
+
     }//GEN-LAST:event_btnSalvarDiaologActionPerformed
+
+    private void btnCancelarDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarDialogActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnCancelarDialogActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,7 +241,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jlabelImgLogo;
     private javax.swing.JLabel jlabelTitleDialog;
     private javax.swing.JPanel jpanelHeaderDialog;
     private javax.swing.JPanel jpanelMainDialog;
