@@ -185,7 +185,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/pacode/code/frame/agenda-logo.png"/>
+                      <Image iconType="3" name="/pacote/code/frame/agenda-logo.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -199,7 +199,7 @@
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/pacode/code/frame/agendar.png"/>
+              <Image iconType="3" name="/pacote/code/frame/agendar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Agendamentos"/>
           </Properties>
@@ -213,7 +213,7 @@
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/pacode/code/frame/paciente.png"/>
+              <Image iconType="3" name="/pacote/code/frame/paciente.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pacientes"/>
           </Properties>
@@ -227,7 +227,7 @@
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/pacode/code/frame/medico.png"/>
+              <Image iconType="3" name="/pacote/code/frame/medico.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="M&#xe9;dicos"/>
           </Properties>
@@ -241,7 +241,7 @@
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/pacode/code/frame/especialidade.png"/>
+              <Image iconType="3" name="/pacote/code/frame/especialidade.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Especialidades"/>
           </Properties>
@@ -255,7 +255,7 @@
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/pacode/code/frame/plano-de-saude.png"/>
+              <Image iconType="3" name="/pacote/code/frame/plano-de-saude.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Plano de Sa&#xfa;de"/>
           </Properties>
@@ -269,7 +269,7 @@
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/pacode/code/frame/sair.png"/>
+              <Image iconType="3" name="/pacote/code/frame/sair.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sair"/>
           </Properties>
@@ -406,7 +406,7 @@
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/pacode/code/frame/pagina-inicial.png"/>
+              <Image iconType="3" name="/pacote/code/frame/pagina-inicial.png"/>
             </Property>
           </Properties>
           <Events>

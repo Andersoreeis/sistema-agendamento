@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package pacode.code.frame;
+package pacote.code.frame;
 
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
 import pacote.code.dao.EspecialidadeDAO;
 
@@ -19,10 +20,13 @@ public class HomeFrame extends javax.swing.JFrame {
      * Creates new form Jframe
      */
     private EspecialidadePanel especialidadesPanel;
+    private PlanoDeSaudePanel planosaudepanel;
     int x = 30;
     int y = 180;
     int height = 479;
     int width = 1000;
+    
+    
     
                   
             
@@ -89,7 +93,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
         jPanel2.setOpaque(false);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/agenda-logo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/agenda-logo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -131,7 +135,7 @@ public class HomeFrame extends javax.swing.JFrame {
         );
 
         btnAgenda.setBackground(new java.awt.Color(204, 204, 204));
-        btnAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/agendar.png"))); // NOI18N
+        btnAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/agendar.png"))); // NOI18N
         btnAgenda.setText("Agendamentos");
         btnAgenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,7 +144,7 @@ public class HomeFrame extends javax.swing.JFrame {
         });
 
         btnPacientes.setBackground(new java.awt.Color(204, 204, 204));
-        btnPacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/paciente.png"))); // NOI18N
+        btnPacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/paciente.png"))); // NOI18N
         btnPacientes.setText("Pacientes");
         btnPacientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +153,7 @@ public class HomeFrame extends javax.swing.JFrame {
         });
 
         btnMedicos.setBackground(new java.awt.Color(204, 204, 204));
-        btnMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/medico.png"))); // NOI18N
+        btnMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/medico.png"))); // NOI18N
         btnMedicos.setText("Médicos");
         btnMedicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +162,7 @@ public class HomeFrame extends javax.swing.JFrame {
         });
 
         btnEspecialidade.setBackground(new java.awt.Color(204, 204, 204));
-        btnEspecialidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/especialidade.png"))); // NOI18N
+        btnEspecialidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/especialidade.png"))); // NOI18N
         btnEspecialidade.setText("Especialidades");
         btnEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +171,7 @@ public class HomeFrame extends javax.swing.JFrame {
         });
 
         btnPlanoDeSaude.setBackground(new java.awt.Color(204, 204, 204));
-        btnPlanoDeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/plano-de-saude.png"))); // NOI18N
+        btnPlanoDeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/plano-de-saude.png"))); // NOI18N
         btnPlanoDeSaude.setText("Plano de Saúde");
         btnPlanoDeSaude.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +180,7 @@ public class HomeFrame extends javax.swing.JFrame {
         });
 
         btnsair.setBackground(new java.awt.Color(204, 204, 204));
-        btnsair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/sair.png"))); // NOI18N
+        btnsair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/sair.png"))); // NOI18N
         btnsair.setText("Sair");
         btnsair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,7 +261,7 @@ public class HomeFrame extends javax.swing.JFrame {
         );
 
         btnHome.setBackground(new java.awt.Color(204, 204, 204));
-        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/pagina-inicial.png"))); // NOI18N
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/pagina-inicial.png"))); // NOI18N
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHomeActionPerformed(evt);
@@ -366,6 +370,9 @@ public class HomeFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         
           btnHome.setVisible(true);
+          jpanelHome.setVisible(false);
+          planosaudepanel.setVisible(true);
+          
     }//GEN-LAST:event_btnPlanoDeSaudeActionPerformed
 
     /**

@@ -2,13 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package pacode.code.frame;
+package pacote.code.frame;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import pacote.code.dao.EspecialidadeDAO;
 import pacote.code.model.Especialidade;
+import pacote.code.model.OperacaoEnum;
 
 /**
  *
@@ -48,6 +49,13 @@ public class EspecialidadePanel extends javax.swing.JPanel {
         btnLimpar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabelaEspecialidades1 = new javax.swing.JTable();
+        btnLimpar1 = new javax.swing.JButton();
+        btnEditar1 = new javax.swing.JButton();
+        btnAdicionar1 = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -74,7 +82,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 808, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,9 +92,9 @@ public class EspecialidadePanel extends javax.swing.JPanel {
         );
 
         add(jPanel1);
-        jPanel1.setBounds(0, 10, 810, 350);
+        jPanel1.setBounds(0, 10, 820, 350);
 
-        btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/excluir (1).png"))); // NOI18N
+        btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/excluir (1).png"))); // NOI18N
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparActionPerformed(evt);
@@ -95,7 +103,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
         add(btnLimpar);
         btnLimpar.setBounds(630, 370, 57, 33);
 
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/caneta.png"))); // NOI18N
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/caneta.png"))); // NOI18N
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -104,7 +112,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
         add(btnEditar);
         btnEditar.setBounds(690, 370, 57, 33);
 
-        btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/plus.png"))); // NOI18N
+        btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/plus.png"))); // NOI18N
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarActionPerformed(evt);
@@ -112,6 +120,73 @@ public class EspecialidadePanel extends javax.swing.JPanel {
         });
         add(btnAdicionar);
         btnAdicionar.setBounds(750, 370, 57, 33);
+
+        jPanel2.setLayout(null);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Especialidades", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 102, 0))); // NOI18N
+        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
+
+        tabelaEspecialidades1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
+        tabelaEspecialidades1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tabelaEspecialidades1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tabelaEspecialidades1);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 808, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 22, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel2.add(jPanel3);
+        jPanel3.setBounds(0, 10, 820, 350);
+
+        btnLimpar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/excluir (1).png"))); // NOI18N
+        btnLimpar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpar1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnLimpar1);
+        btnLimpar1.setBounds(630, 370, 57, 33);
+
+        btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/caneta.png"))); // NOI18N
+        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnEditar1);
+        btnEditar1.setBounds(690, 370, 57, 33);
+
+        btnAdicionar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/plus.png"))); // NOI18N
+        btnAdicionar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionar1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAdicionar1);
+        btnAdicionar1.setBounds(750, 370, 57, 33);
+
+        add(jPanel2);
+        jPanel2.setBounds(0, 0, 0, 0);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -148,7 +223,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
     }
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         // TODO add your handling code here:
-        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true);
+        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true, OperacaoEnum.Adicionar);
         especialidadeDialog.setVisible(true);
         prencherTabela();
 
@@ -170,14 +245,33 @@ public class EspecialidadePanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnEditarActionPerformed
 
+    private void btnLimpar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpar1ActionPerformed
+
+    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditar1ActionPerformed
+
+    private void btnAdicionar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdicionar1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnAdicionar1;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnLimpar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabelaEspecialidades;
+    private javax.swing.JTable tabelaEspecialidades1;
     // End of variables declaration//GEN-END:variables
 
     private void prencherTabela() {
@@ -204,7 +298,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
 
     private void editarEspecialidade() {
         Especialidade especialidade = EspecialidadeDAO.getEspecialidade(getCodigo());
-        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true);
+        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true,especialidade, OperacaoEnum.Editar);
         especialidadeDialog.setVisible(true);
         prencherTabela();
     }

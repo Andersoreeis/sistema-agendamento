@@ -2,52 +2,56 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package pacode.code.frame;
+package pacote.code.frame;
 
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import pacote.code.dao.EspecialidadeDAO;
 import pacote.code.model.Especialidade;
+import pacote.code.model.OperacaoEnum;
 
 /**
  *
  * @author 22282173
  */
 public class EspecialidadeDialog extends javax.swing.JDialog {
-        Especialidade especialidade;
-        
-        
-    public EspecialidadeDialog(
-            java.awt.Frame parent,
-            boolean modal,
-            Especialidade e)
-    {
+
+    private Especialidade especialidade;
+    private OperacaoEnum operacao;
+
+    public EspecialidadeDialog(java.awt.Frame parent, boolean modal, OperacaoEnum operacao) {
         super(parent, modal);
         initComponents();
-          especialidade = e;
-           
-          prencherFormulario();
+        this.operacao = operacao;
+        prencherTitulo();
     }
-    private void prencherFormulario(){
-        jlabelTitleDialog.setText("Especialidade Editar");
-        jlabelImgLogo.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource(/pacode/code/frame/caneta.png)));
-        
+
+    public EspecialidadeDialog(java.awt.Frame parent, boolean modal, Especialidade e, OperacaoEnum operacao) {
+        super(parent, modal);
+        especialidade = e;
+        this.operacao = operacao;
+        initComponents();
+        prencherTitulo();
+        prencherFormulario();
+    }
+
+    private void prencherFormulario() {
         jtextfieldCodigo.setText(especialidade.getCodigo().toString());
         jtextfieldNomeEspecialidade.setText(especialidade.getNome());
         jtextfieldDescricaoEspecialidade.setText(especialidade.getDescricao());
-  
-        
+
     }
+
     
-    
-        public EspecialidadeDialog(
-            java.awt.Frame parent,
-            boolean modal)
-    {
-        super(parent, modal);
-        initComponents();
-      
-        
+        private void prencherTitulo(){
+     jlabelTitleDialog.setText("Especialidade " + operacao);
+     if(operacao == OperacaoEnum.Editar){
+     
+          jlabelImgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/canetalogo.png")));
+         
+         
+     }
+
     }
 
     /**
@@ -73,9 +77,9 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         btnCancelarDialog = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Adicionar");
         setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
+        setSize(new java.awt.Dimension(700, 400));
         getContentPane().setLayout(null);
 
         jpanelHeaderDialog.setBackground(new java.awt.Color(255, 153, 0));
@@ -83,13 +87,13 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
 
         jlabelTitleDialog.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jlabelTitleDialog.setForeground(new java.awt.Color(255, 255, 255));
-        jlabelTitleDialog.setText("Especialidades Adicionar");
+        jlabelTitleDialog.setText("Especialidades ADICIONAR");
         jpanelHeaderDialog.add(jlabelTitleDialog);
-        jlabelTitleDialog.setBounds(20, 20, 290, 40);
+        jlabelTitleDialog.setBounds(70, 20, 310, 40);
 
-        jlabelImgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/adicionarCoisas.png"))); // NOI18N
+        jlabelImgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/adicionarCoisas.png"))); // NOI18N
         jpanelHeaderDialog.add(jlabelImgLogo);
-        jlabelImgLogo.setBounds(320, 20, 40, 40);
+        jlabelImgLogo.setBounds(30, 20, 40, 40);
 
         getContentPane().add(jpanelHeaderDialog);
         jpanelHeaderDialog.setBounds(0, 0, 800, 70);
@@ -135,10 +139,10 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
 
         jLabel3.setText("NOME DA ESPECIALIDADE");
         jpanelMainDialog.add(jLabel3);
-        jLabel3.setBounds(50, 110, 140, 16);
+        jLabel3.setBounds(50, 110, 190, 16);
 
         btnSalvarDiaolog.setBackground(new java.awt.Color(255, 255, 255));
-        btnSalvarDiaolog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/salvar.png"))); // NOI18N
+        btnSalvarDiaolog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/salvar.png"))); // NOI18N
         btnSalvarDiaolog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarDiaologActionPerformed(evt);
@@ -148,7 +152,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         btnSalvarDiaolog.setBounds(630, 253, 50, 40);
 
         btnCancelarDialog.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelarDialog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacode/code/frame/excluir (4).png"))); // NOI18N
+        btnCancelarDialog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/excluir (4).png"))); // NOI18N
         btnCancelarDialog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarDialogActionPerformed(evt);
@@ -178,7 +182,27 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
 
     private void btnSalvarDiaologActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDiaologActionPerformed
         // TODO add your handling code here:
-        Especialidade novaEspecialidade = new Especialidade();
+    if(operacao == OperacaoEnum.Adicionar){
+             adicionar();
+    }else{
+       editar();
+    }
+   
+    
+    
+    
+    }//GEN-LAST:event_btnSalvarDiaologActionPerformed
+    private void editar(){
+        especialidade.setNome(jtextfieldNomeEspecialidade.getText());
+        especialidade.setDescricao(jtextfieldDescricaoEspecialidade.getText());
+        EspecialidadeDAO.atualizar(especialidade);
+        dispose();
+    }
+    
+    
+    
+    private void adicionar(){
+          Especialidade novaEspecialidade = new Especialidade();
         novaEspecialidade.setNome(jtextfieldNomeEspecialidade.getText());
         novaEspecialidade.setDescricao(jtextfieldDescricaoEspecialidade.getText());
         // Gravar o objeto, através do dao
@@ -186,8 +210,9 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(this, "Gravado Com sucesso", " Especialidade", JOptionPane.INFORMATION_MESSAGE);
         dispose();
 
-    }//GEN-LAST:event_btnSalvarDiaologActionPerformed
-
+    }                
+    
+  
     private void btnCancelarDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarDialogActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -196,44 +221,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EspecialidadeDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EspecialidadeDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EspecialidadeDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EspecialidadeDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                EspecialidadeDialog dialog = new EspecialidadeDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarDialog;

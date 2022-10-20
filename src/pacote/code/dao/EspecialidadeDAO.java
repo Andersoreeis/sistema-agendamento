@@ -54,7 +54,7 @@ public class EspecialidadeDAO {
     }
 
     public static DefaultTableModel getEspecialidadesModel() {
-        
+
         String[] titulos = {"CODIGO", "ESPECIALIDADE", "DESCRIÇÃO"};
         String[][] dados = new String[especialidades.size()][3];
 

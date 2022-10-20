@@ -1,6 +1,6 @@
-package pacode.code.teste;
+package pacote.code.teste;
 
-import pacode.code.frame.HomeFrame;
+import pacote.code.frame.HomeFrame;
 
 
 

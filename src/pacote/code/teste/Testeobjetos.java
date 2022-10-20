@@ -1,4 +1,4 @@
-package pacode.code.teste;
+package pacote.code.teste;
 
 import java.util.ArrayList;
 import pacote.code.dao.EspecialidadeDAO;
