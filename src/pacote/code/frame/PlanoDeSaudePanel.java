@@ -21,9 +21,18 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
     /**
      * Creates new form PlanoDeSaudePanel
      */
-        private int linha;
+    private int linha;
+
     public PlanoDeSaudePanel() {
         initComponents();
+        PlanoDeSaudeDAO.criarListaDePlanoDeSaude();
+        ajustarTabela();
+        prencherTabela();
+    }
+
+    private int getLinha() {
+        linha = tabelaPlanoDeSaude.getSelectedRow();
+        return linha;
     }
 
     /**
@@ -189,25 +198,65 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
 
     private void btnLimparPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparPlanoDeSaudeActionPerformed
         // TODO add your handling code here:
+              getLinha();
+        if (getLinha() != -1) {
+            excluirPlanoDeSaude();
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Nenhuma linha selecionada, Por favor Selecione!!",
+                    "Atenção", JOptionPane.WARNING_MESSAGE,
+                    null
+            );
+        }
 
 
     }//GEN-LAST:event_btnLimparPlanoDeSaudeActionPerformed
+        private void excluirPlanoDeSaude() {
 
+        getLinha();
+        Integer coluna = 0;
+
+        int resposta = JOptionPane.showConfirmDialog(this,
+                "Você deseja escluir esse Plano De Saúde",
+                "Confirmação", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (resposta == 0) {
+            PlanoDeSaudeDAO.excluirPlanoDeSaude(getCodigo());
+            prencherTabela();
+        }
+
+    }
     private void btnEditarPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPlanoDeSaudeActionPerformed
         // TODO add your handling code here:
-      
+
+            if (getLinha() != -1) {
+            editarPlanoDeSAude();
+
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Por favor clique na especialidade desejavel",
+                    "Atenção",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+
 
     }//GEN-LAST:event_btnEditarPlanoDeSaudeActionPerformed
 
     private void btnAdicionarPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarPlanoDeSaudeActionPerformed
         // TODO add your handling code here:
-        
+        PlanoDeSaudeDialog planoDeSaudeDialog = new PlanoDeSaudeDialog(null, true, OperacaoEnum.Adicionar);
+        planoDeSaudeDialog.setVisible(true);
+        prencherTabela();
 
     }//GEN-LAST:event_btnAdicionarPlanoDeSaudeActionPerformed
 
     private void btnLimpar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar1ActionPerformed
         // TODO add your handling code here:
+      
+
     }//GEN-LAST:event_btnLimpar1ActionPerformed
+    
 
     private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
         // TODO add your handling code here:
@@ -215,6 +264,7 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
 
     private void btnAdicionar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar1ActionPerformed
         // TODO add your handling code here:
+      
     }//GEN-LAST:event_btnAdicionar1ActionPerformed
 
 
@@ -236,38 +286,35 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
  private void prencherTabela() {
 
-       tabelaPlanoDeSaude.setModel(PlanoDeSaudeDAO.getPlanoDeSaudeModel());
-       ajustarTabela();
+        tabelaPlanoDeSaude.setModel(PlanoDeSaudeDAO.getPlanoDeSaudeModel());
+        ajustarTabela();
 
     }
-         private int getLinha() {
-        linha = tabelaPlanoDeSaude.getSelectedRow();
-        return linha;
-    }
 
-
-     private void ajustarTabela() {
+    private void ajustarTabela() {
         tabelaPlanoDeSaude.getTableHeader().setReorderingAllowed(false);
         tabelaPlanoDeSaude.setDefaultEditor(Object.class, null);
         tabelaPlanoDeSaude.getColumnModel().getColumn(0).setPreferredWidth(100);
-        tabelaPlanoDeSaude.getColumnModel().getColumn(1).setPreferredWidth(300);
-        tabelaPlanoDeSaude.getColumnModel().getColumn(2).setPreferredWidth(395);
+        tabelaPlanoDeSaude.getColumnModel().getColumn(1).setPreferredWidth(200);
+        tabelaPlanoDeSaude.getColumnModel().getColumn(2).setPreferredWidth(200);
+        tabelaPlanoDeSaude.getColumnModel().getColumn(3).setPreferredWidth(200);
+        tabelaPlanoDeSaude.getColumnModel().getColumn(3).setPreferredWidth(210);
         tabelaPlanoDeSaude.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
     }
-   private Integer getCodigo(){
-       String codigoStr = tabelaPlanoDeSaude.getValueAt(getLinha(), 0).toString();
+
+    private Integer getCodigo() {
+        String codigoStr = tabelaPlanoDeSaude.getValueAt(getLinha(), 0).toString();
         Integer codigo = Integer.valueOf(codigoStr);
         return codigo;
-}
-
-    private void editarPlanoDeSAude() {
-      
-     
     }
 
-
-
-
+    private void editarPlanoDeSAude() {
+ 
+    PlanoDeSaude planodesaude = PlanoDeSaudeDAO.getPlanoDeSaude(getCodigo());
+    PlanoDeSaudeDialog planodesaudedialog = new PlanoDeSaudeDialog(null, true, planodesaude, OperacaoEnum.Editar);
+        planodesaudedialog.setVisible(true);
+        prencherTabela();
+    }
 
 }

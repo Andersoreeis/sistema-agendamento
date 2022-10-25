@@ -32,7 +32,8 @@ public class HomeFrame extends javax.swing.JFrame {
             
     public HomeFrame() {
         initComponents();
-        initPanels();
+        initPanelsEspecialidade();
+         initPanelsPlanoDeSaude();
         String jframeLogo = "/image/agenda-logo.png";
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource(jframeLogo)));
         
@@ -362,7 +363,7 @@ public class HomeFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
           btnHome.setVisible(true);
           jpanelHome.setVisible(false);
-          especialidadesPanel.setVisible(true);
+           especialidadesPanel.setVisible(true);
           
     }//GEN-LAST:event_btnEspecialidadeActionPerformed
 
@@ -372,7 +373,7 @@ public class HomeFrame extends javax.swing.JFrame {
           btnHome.setVisible(true);
           jpanelHome.setVisible(false);
           planosaudepanel.setVisible(true);
-          
+         
     }//GEN-LAST:event_btnPlanoDeSaudeActionPerformed
 
     /**
@@ -437,14 +438,22 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jpanelPrincipal;
     // End of variables declaration//GEN-END:variables
 
-    private void initPanels() {
+    private void initPanelsEspecialidade() {
         especialidadesPanel = new EspecialidadePanel();
         especialidadesPanel.setBounds(x, y, width, height );
         getContentPane().add(especialidadesPanel);
         especialidadesPanel.setVisible(false);
         
     }
-
+       private void initPanelsPlanoDeSaude() {
+        planosaudepanel = new PlanoDeSaudePanel();
+        planosaudepanel.setBounds(x, y, width, height );
+        getContentPane().add(planosaudepanel);
+        planosaudepanel.setVisible(false);
+        
+    }
+   
+   
     
     
                                  

@@ -6,6 +6,7 @@ package pacote.code.dao;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import pacote.code.model.PlanoDeSaude;
@@ -51,14 +52,16 @@ public class PlanoDeSaudeDAO {
 
     public static DefaultTableModel getPlanoDeSaudeModel() {
         String[] titulos = {"CÓDIGO", "OPERADORA", "CATEGORIA", "NÚMERO", "VALIDADE"};
-        String[][] dados = new String[planodesaudes.size()][4];
+        String[][] dados = new String[planodesaudes.size()][5];
         int i = 0;
         for (PlanoDeSaude p : planodesaudes) {
             dados[i][0] = p.getCodigo().toString();
             dados[i][1] = p.getOperadora();
             dados[i][2] = p.getCategoria();
             dados[i][3] = p.getNumero();
-            dados[i][4] = p.getValidade().toString();
+            
+            dados[i][4] = p.getDataFormatada();
+            i++;
         }
         DefaultTableModel model = new DefaultTableModel(dados, titulos);
         return model;

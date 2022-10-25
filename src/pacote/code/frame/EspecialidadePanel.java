@@ -290,15 +290,16 @@ public class EspecialidadePanel extends javax.swing.JPanel {
         tabelaEspecialidades.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
     }
-   private Integer getCodigo(){
-    String codigoStr = tabelaEspecialidades.getValueAt(getLinha(), 0).toString();
-    Integer codigo = Integer.valueOf(codigoStr);
-    return codigo;
-}
+
+    private Integer getCodigo() {
+        String codigoStr = tabelaEspecialidades.getValueAt(getLinha(), 0).toString();
+        Integer codigo = Integer.valueOf(codigoStr);
+        return codigo;
+    }
 
     private void editarEspecialidade() {
         Especialidade especialidade = EspecialidadeDAO.getEspecialidade(getCodigo());
-        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true,especialidade, OperacaoEnum.Editar);
+        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true, especialidade, OperacaoEnum.Editar);
         especialidadeDialog.setVisible(true);
         prencherTabela();
     }

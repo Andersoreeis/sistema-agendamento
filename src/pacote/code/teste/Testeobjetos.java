@@ -55,16 +55,15 @@ public class Testeobjetos {
 		for(PlanoDeSaude p : planodesaudes) {
 		
 			System.out.println(p.getOperadora());
-			
+			    System.out.println(p2.getCodigo());
 		}
 		AgendaApp.main(args);
-		System.out.println("Total de plano de Saúdes: " + PlanoDeSaude.getQuantidade());
+		System.out.println("Total de plano de Saúdes: " + p2.getCodigo());
                   System.out.println("Total de Especialidades: " + e1.getContador());
-                  
-                
-                  System.out.println(e1.getCodigo() + " - " + e1.getNome());
-                  System.out.println(e2.getCodigo() + " - " + e2.getNome());
-                  System.out.println(e3.getCodigo() + " - " + e3.getNome());
+              
+               
+                        
+             
                   
 
 

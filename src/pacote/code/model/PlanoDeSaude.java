@@ -1,30 +1,36 @@
 package pacote.code.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class PlanoDeSaude {
-
+    
     private static String operadora;
     private String categoria;
     private String numero;
     private LocalDate validade;
     private static int contador = 100;
     public Integer codigo;
+    private  DateTimeFormatter formatador;
+    private String dataFormatada;
 
     public PlanoDeSaude(String operadora) {
         this.operadora = operadora;
-        this.contador++;
+        gerarCodigo();
     }
        public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade) {
+           formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+           dataFormatada = validade.format(formatador);
+            
         this.categoria = categoria;
         this.operadora = operadora;
         this.numero = numero;
         this.validade = validade;
-        this.contador++;
+       gerarCodigo();
     }
 
     public PlanoDeSaude() {
-        this.contador++;
+       gerarCodigo();
     }
 
     public String getOperadora() {
@@ -74,5 +80,18 @@ public class PlanoDeSaude {
         this.codigo = contador;
            
     }
+
+    public String getDataFormatada() {
+        return dataFormatada;
+    }
+
+    public DateTimeFormatter getFormatador() {
+        return formatador;
+    }
+
+    public void setDataFormatada(String dataFormatada) {
+        this.dataFormatada = dataFormatada;
+    }
+    
 
 }
