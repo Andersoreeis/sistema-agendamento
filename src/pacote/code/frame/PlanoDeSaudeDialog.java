@@ -4,7 +4,6 @@
  */
 package pacote.code.frame;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import pacote.code.dao.PlanoDeSaudeDAO;
@@ -71,7 +70,6 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         jlabelImgLogo = new javax.swing.JLabel();
         jpanelMainDialog = new javax.swing.JPanel();
         jtextfieldCodigo = new javax.swing.JTextField();
-        jtextfieldValidade = new javax.swing.JTextField();
         jtextfieldOperadora = new javax.swing.JTextField();
         jlabelValidade = new javax.swing.JLabel();
         jlabelCodigo = new javax.swing.JLabel();
@@ -82,6 +80,7 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         jlabelCategoria = new javax.swing.JLabel();
         jtextfieldNumero = new javax.swing.JTextField();
         jlabelNumero = new javax.swing.JLabel();
+        jformattedData = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -104,7 +103,7 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         getContentPane().add(jpanelHeaderDialog);
         jpanelHeaderDialog.setBounds(0, 0, 800, 70);
 
-        jpanelMainDialog.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalhes do Plano De Súde", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 102, 0))); // NOI18N
+        jpanelMainDialog.setBorder(javax.swing.BorderFactory.createTitledBorder(null, null, null, null, null, new java.awt.Color(255, 102, 0)));
         jpanelMainDialog.setLayout(null);
 
         jtextfieldCodigo.setEditable(false);
@@ -116,15 +115,6 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         });
         jpanelMainDialog.add(jtextfieldCodigo);
         jtextfieldCodigo.setBounds(50, 60, 80, 30);
-
-        jtextfieldValidade.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
-        jtextfieldValidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextfieldValidadeActionPerformed(evt);
-            }
-        });
-        jpanelMainDialog.add(jtextfieldValidade);
-        jtextfieldValidade.setBounds(400, 130, 130, 30);
 
         jtextfieldOperadora.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
         jtextfieldOperadora.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +137,6 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         jpanelMainDialog.add(jlabelOPeradora);
         jlabelOPeradora.setBounds(50, 110, 190, 16);
 
-        btnSalvarDiaolog.setBackground(new java.awt.Color(255, 255, 255));
         btnSalvarDiaolog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/salvar.png"))); // NOI18N
         btnSalvarDiaolog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +146,6 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         jpanelMainDialog.add(btnSalvarDiaolog);
         btnSalvarDiaolog.setBounds(550, 260, 50, 40);
 
-        btnCancelarDialog.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelarDialog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/excluir (4).png"))); // NOI18N
         btnCancelarDialog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +181,21 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         jpanelMainDialog.add(jlabelNumero);
         jlabelNumero.setBounds(400, 50, 210, 16);
 
+        jformattedData.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
+        try {
+            jformattedData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jformattedData.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jformattedData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jformattedDataActionPerformed(evt);
+            }
+        });
+        jpanelMainDialog.add(jformattedData);
+        jformattedData.setBounds(400, 130, 80, 30);
+
         getContentPane().add(jpanelMainDialog);
         jpanelMainDialog.setBounds(40, 90, 700, 310);
 
@@ -203,10 +206,6 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
     private void jtextfieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextfieldCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextfieldCodigoActionPerformed
-
-    private void jtextfieldValidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextfieldValidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtextfieldValidadeActionPerformed
 
     private void jtextfieldOperadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextfieldOperadoraActionPerformed
         // TODO add your handling code here:
@@ -235,6 +234,10 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextfieldNumeroActionPerformed
 
+    private void jformattedDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jformattedDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jformattedDataActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,7 +246,7 @@ private void editar(){
     planodesaude.setCategoria(jtextfieldCategoria.getText());
     planodesaude.setNumero(jtextfieldNumero.getText());
     planodesaude.setOperadora(jtextfieldOperadora.getText());
-    planodesaude.setValidade(LocalDate.parse(jtextfieldValidade.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+    planodesaude.setDataFormatada(jformattedData.getText());
      JOptionPane.showMessageDialog(this, "Gravado Com sucesso", " Plano De Saúde", JOptionPane.INFORMATION_MESSAGE);
     PlanoDeSaudeDAO.atualizar(planodesaude);
     dispose();
@@ -254,7 +257,7 @@ private void adicionar(){
     NovoPlanoDeSaude.setCategoria(jtextfieldCategoria.getText());
     NovoPlanoDeSaude.setNumero(jtextfieldNumero.getText());
     NovoPlanoDeSaude.setOperadora(jtextfieldOperadora.getText());
-    NovoPlanoDeSaude.setValidade(LocalDate.parse(jtextfieldValidade.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+    NovoPlanoDeSaude.setDataFormatada(jformattedData.getText());
     PlanoDeSaudeDAO.gravar(NovoPlanoDeSaude);
     JOptionPane.showMessageDialog(this, "Gravado Com sucesso", " Plano de Saúde", JOptionPane.INFORMATION_MESSAGE);
         dispose();
@@ -262,6 +265,7 @@ private void adicionar(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarDialog;
     private javax.swing.JButton btnSalvarDiaolog;
+    private javax.swing.JFormattedTextField jformattedData;
     private javax.swing.JLabel jlabelCategoria;
     private javax.swing.JLabel jlabelCodigo;
     private javax.swing.JLabel jlabelImgLogo;
@@ -275,6 +279,5 @@ private void adicionar(){
     private javax.swing.JTextField jtextfieldCodigo;
     private javax.swing.JTextField jtextfieldNumero;
     private javax.swing.JTextField jtextfieldOperadora;
-    private javax.swing.JTextField jtextfieldValidade;
     // End of variables declaration//GEN-END:variables
 }
