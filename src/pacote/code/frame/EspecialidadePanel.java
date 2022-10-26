@@ -192,7 +192,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         // TODO add your handling code here:
-        getLinha();
+       
         if (getLinha() != -1) {
             escluirEspecialidade();
         } else {
@@ -207,8 +207,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLimparActionPerformed
     private void escluirEspecialidade() {
 
-        getLinha();
-        Integer coluna = 0;
+   
 
         int resposta = JOptionPane.showConfirmDialog(this,
                 "Você deseja escluir essa especialidade",

@@ -72,7 +72,7 @@ public class EspecialidadeDAO {
 
     public static void atualizar(Especialidade especialidadeAtualizada) {
         for (Especialidade lista : especialidades) {
-            if (especialidadeAtualizada.getCodigo() == lista.getCodigo()) {
+            if (especialidadeAtualizada.getCodigo().equals(lista.getCodigo()) ) {
 
 //                lista.setCodigo(especialidadeAtualizada.getCodigo());
 //                lista.setDescricao(especialidadeAtualizada.getDescricao());
@@ -80,7 +80,7 @@ public class EspecialidadeDAO {
                 int posicao = especialidades.indexOf(lista);
 
                 especialidades.set(posicao, especialidadeAtualizada);
-                break;
+              
 
             }
         }

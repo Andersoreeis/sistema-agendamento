@@ -42,15 +42,13 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
 
     }
 
-    
-        private void prencherTitulo(){
-     jlabelTitleDialog.setText("Especialidade " + operacao);
-     if(operacao == OperacaoEnum.Editar){
-     
-          jlabelImgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/canetalogo.png")));
-         
-         
-     }
+    private void prencherTitulo() {
+        jlabelTitleDialog.setText("Especialidade " + operacao);
+        if (operacao == OperacaoEnum.Editar) {
+
+            jlabelImgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/canetalogo.png")));
+
+        }
 
     }
 
@@ -182,27 +180,32 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
 
     private void btnSalvarDiaologActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDiaologActionPerformed
         // TODO add your handling code here:
-    if(operacao == OperacaoEnum.Adicionar){
-             adicionar();
-    }else{
-       editar();
-    }
-   
-    
-    
-    
+
+        if (jtextfieldNomeEspecialidade.getText().isBlank() || jtextfieldDescricaoEspecialidade.getText().isBlank() == true) {
+            JOptionPane.showMessageDialog(this, "Por favor insira os caracteres necessários");
+
+        } else {
+
+            if (operacao == OperacaoEnum.Adicionar) {
+                adicionar();
+            } else {
+                editar();
+            }
+
+        }
+
+
     }//GEN-LAST:event_btnSalvarDiaologActionPerformed
-    private void editar(){
+    private void editar() {
         especialidade.setNome(jtextfieldNomeEspecialidade.getText());
         especialidade.setDescricao(jtextfieldDescricaoEspecialidade.getText());
         EspecialidadeDAO.atualizar(especialidade);
+          JOptionPane.showMessageDialog(this, "Gravado Com sucesso", " Especialidade", JOptionPane.INFORMATION_MESSAGE);
         dispose();
     }
-    
-    
-    
-    private void adicionar(){
-          Especialidade novaEspecialidade = new Especialidade();
+
+    private void adicionar() {
+        Especialidade novaEspecialidade = new Especialidade();
         novaEspecialidade.setNome(jtextfieldNomeEspecialidade.getText());
         novaEspecialidade.setDescricao(jtextfieldDescricaoEspecialidade.getText());
         // Gravar o objeto, através do dao
@@ -210,9 +213,9 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(this, "Gravado Com sucesso", " Especialidade", JOptionPane.INFORMATION_MESSAGE);
         dispose();
 
-    }                
-    
-  
+    }
+
+
     private void btnCancelarDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarDialogActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -221,7 +224,6 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarDialog;

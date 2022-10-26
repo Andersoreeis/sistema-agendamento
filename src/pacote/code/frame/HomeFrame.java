@@ -364,7 +364,7 @@ public class HomeFrame extends javax.swing.JFrame {
           btnHome.setVisible(true);
           jpanelHome.setVisible(false);
            especialidadesPanel.setVisible(true);
-          
+           planosaudepanel.setVisible(false);
     }//GEN-LAST:event_btnEspecialidadeActionPerformed
 
     private void btnPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanoDeSaudeActionPerformed
@@ -373,6 +373,7 @@ public class HomeFrame extends javax.swing.JFrame {
           btnHome.setVisible(true);
           jpanelHome.setVisible(false);
           planosaudepanel.setVisible(true);
+          especialidadesPanel.setVisible(false);
          
     }//GEN-LAST:event_btnPlanoDeSaudeActionPerformed
 

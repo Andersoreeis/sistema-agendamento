@@ -59,7 +59,6 @@ public class PlanoDeSaudeDAO {
             dados[i][1] = p.getOperadora();
             dados[i][2] = p.getCategoria();
             dados[i][3] = p.getNumero();
-            
             dados[i][4] = p.getDataFormatada();
             i++;
         }
@@ -69,10 +68,10 @@ public class PlanoDeSaudeDAO {
 
     public static void atualizar(PlanoDeSaude planodesaudeAtualizado) {
         for (PlanoDeSaude lista : planodesaudes) {
-            if (planodesaudeAtualizado.getCodigo() == lista.getCodigo()) {
+            if (planodesaudeAtualizado.getCodigo().equals(lista.getCodigo())) {
                 int posicao = planodesaudes.indexOf(lista);
                 planodesaudes.set(posicao, planodesaudeAtualizado);
-                break;
+               
             }
         }
     }

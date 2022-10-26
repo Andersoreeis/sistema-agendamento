@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 public class PlanoDeSaude {
     
-    private static String operadora;
+    private String operadora;
     private String categoria;
     private String numero;
     private LocalDate validade;
