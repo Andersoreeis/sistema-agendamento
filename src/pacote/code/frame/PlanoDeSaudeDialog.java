@@ -175,7 +175,7 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
             }
         });
         jpanelMainDialog.add(jtextfieldNumero);
-        jtextfieldNumero.setBounds(400, 70, 60, 30);
+        jtextfieldNumero.setBounds(400, 70, 70, 30);
 
         jlabelNumero.setText("NÚMERO");
         jpanelMainDialog.add(jlabelNumero);
@@ -194,7 +194,7 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
             }
         });
         jpanelMainDialog.add(jformattedData);
-        jformattedData.setBounds(400, 130, 80, 30);
+        jformattedData.setBounds(400, 130, 70, 30);
 
         getContentPane().add(jpanelMainDialog);
         jpanelMainDialog.setBounds(40, 90, 700, 310);
