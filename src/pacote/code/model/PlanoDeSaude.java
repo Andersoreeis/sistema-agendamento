@@ -4,33 +4,44 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class PlanoDeSaude {
-    
+
     private String operadora;
     private String categoria;
     private String numero;
     private LocalDate validade;
+    private String data ;
     private static int contador = 100;
     public Integer codigo;
-    private  DateTimeFormatter formatador;
+    private DateTimeFormatter formatador;
     private String dataFormatada;
 
     public PlanoDeSaude(String operadora) {
         this.operadora = operadora;
         gerarCodigo();
     }
-       public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade) {
-           formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-           dataFormatada = validade.format(formatador);
-            
+
+    public PlanoDeSaude(Integer codigo, String operadora, String categoria, String numero, String data) {
+        this.codigo = codigo;
+        this.categoria = categoria;
+        this.operadora = operadora;
+        this.numero = numero;
+        this.data = data;
+        this.contador = codigo;
+    }
+
+    public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade) {
+        formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        dataFormatada = validade.format(formatador);
+        this.codigo = codigo;
         this.categoria = categoria;
         this.operadora = operadora;
         this.numero = numero;
         this.validade = validade;
-       gerarCodigo();
+        gerarCodigo();
     }
 
     public PlanoDeSaude() {
-       gerarCodigo();
+        gerarCodigo();
     }
 
     public String getOperadora() {
@@ -68,17 +79,19 @@ public class PlanoDeSaude {
     public static void setCodigo(int contador) {
         PlanoDeSaude.contador = contador;
     }
-   public  int getContador() {
+
+    public int getContador() {
         return contador;
     }
 
     public Integer getCodigo() {
         return codigo;
     }
-    public void gerarCodigo(){
+
+    public void gerarCodigo() {
         this.contador++;
         this.codigo = contador;
-           
+
     }
 
     public String getDataFormatada() {
@@ -92,6 +105,9 @@ public class PlanoDeSaude {
     public void setDataFormatada(String dataFormatada) {
         this.dataFormatada = dataFormatada;
     }
-    
+
+    public String getSeparadoPorVirgula() {
+        return this.codigo + ";" + this.operadora + ";" + this.categoria + ";" + this.numero + ";" + this.dataFormatada;
+    }
 
 }

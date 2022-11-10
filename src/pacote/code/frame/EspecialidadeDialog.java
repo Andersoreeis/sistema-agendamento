@@ -116,7 +116,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
             }
         });
         jpanelMainDialog.add(jtextfieldNomeEspecialidade);
-        jtextfieldNomeEspecialidade.setBounds(50, 210, 460, 30);
+        jtextfieldNomeEspecialidade.setBounds(50, 130, 460, 30);
 
         jtextfieldDescricaoEspecialidade.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
         jtextfieldDescricaoEspecialidade.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +125,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
             }
         });
         jpanelMainDialog.add(jtextfieldDescricaoEspecialidade);
-        jtextfieldDescricaoEspecialidade.setBounds(50, 130, 460, 30);
+        jtextfieldDescricaoEspecialidade.setBounds(50, 220, 460, 30);
 
         jLabel1.setText("DESCRIÇÂO DA ESPECIALIDADE");
         jpanelMainDialog.add(jLabel1);
@@ -139,7 +139,6 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         jpanelMainDialog.add(jLabel3);
         jLabel3.setBounds(50, 110, 190, 16);
 
-        btnSalvarDiaolog.setBackground(new java.awt.Color(255, 255, 255));
         btnSalvarDiaolog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/salvar.png"))); // NOI18N
         btnSalvarDiaolog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +148,6 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         jpanelMainDialog.add(btnSalvarDiaolog);
         btnSalvarDiaolog.setBounds(630, 253, 50, 40);
 
-        btnCancelarDialog.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelarDialog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/excluir (4).png"))); // NOI18N
         btnCancelarDialog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

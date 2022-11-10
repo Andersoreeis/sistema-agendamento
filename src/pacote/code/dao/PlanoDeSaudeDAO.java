@@ -4,11 +4,20 @@
  */
 package pacote.code.dao;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import pacote.code.model.Especialidade;
 import pacote.code.model.PlanoDeSaude;
 
 /**
@@ -16,6 +25,11 @@ import pacote.code.model.PlanoDeSaude;
  * @author 22282173
  */
 public class PlanoDeSaudeDAO {
+
+    private final static String URL = "C:\\Users\\22282173\\java\\PlanoDeSaude.txt";
+    private final static Path PATH = Paths.get(URL);
+     private String dataFormatada;
+     private DateTimeFormatter formatador;
 
     private static ArrayList<PlanoDeSaude> planodesaudes = new ArrayList<>();
 
@@ -43,10 +57,22 @@ public class PlanoDeSaudeDAO {
     }
 
     public static void criarListaDePlanoDeSaude() {
-        PlanoDeSaude p1 = new PlanoDeSaude("Bradesco Saúde", "Premiun", "291", LocalDate.of(2024, Month.MARCH, 23));
-        PlanoDeSaude p2 = new PlanoDeSaude("Porto Seguro", "Bronze", "333", LocalDate.of(2025, Month.FEBRUARY, 18));
-        planodesaudes.add(p1);
-        planodesaudes.add(p2);
+        
+          
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+            String linha = leitor.readLine();
+            while (linha != null) {
+                String[] vetor = linha.split(";");
+                PlanoDeSaude p = new PlanoDeSaude(Integer.valueOf(vetor[0]), vetor[1], vetor[2], vetor[3],vetor[4]);
+                planodesaudes.add(p);
+                linha = leitor.readLine();
+            }
+            leitor.close();
+
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao ler o arquivo");
+        }
 
     }
 
@@ -71,12 +97,21 @@ public class PlanoDeSaudeDAO {
             if (planodesaudeAtualizado.getCodigo().equals(lista.getCodigo())) {
                 int posicao = planodesaudes.indexOf(lista);
                 planodesaudes.set(posicao, planodesaudeAtualizado);
-               
+
             }
         }
     }
 
     public static void gravar(PlanoDeSaude dados) {
         planodesaudes.add(dados);
+        try {
+            BufferedWriter escritor = Files.newBufferedWriter(PATH, StandardOpenOption.APPEND, StandardOpenOption.WRITE);
+            escritor.write(dados.getSeparadoPorVirgula());
+            escritor.newLine();
+            escritor.close();
+        } catch (IOException error) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro");
+        }
+
     }
 }

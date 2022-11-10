@@ -4,7 +4,15 @@
  */
 package pacote.code.dao;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import pacote.code.model.Especialidade;
 
@@ -13,6 +21,9 @@ import pacote.code.model.Especialidade;
  * @author 22282173
  */
 public class EspecialidadeDAO {
+
+    private final static String URL = "C:\\Users\\22282173\\java\\Especialidade.txt";
+    private final static Path PATH = Paths.get(URL);
 
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
 
@@ -43,14 +54,21 @@ public class EspecialidadeDAO {
 
     // criar uma lista inicial de especialidades
     public static void criarListaDeEspecialidades() {
-        Especialidade e1 = new Especialidade("Cardiologia", "Cuida do coração.");
-        Especialidade e2 = new Especialidade("Demartologista", "Cuida da pele.");
-        Especialidade e3 = new Especialidade("Gastrologista", "Cuida da barriga.");
-        Especialidade e4 = new Especialidade("Pediatria", "Cuida das Crianças");
-        especialidades.add(e1);
-        especialidades.add(e2);
-        especialidades.add(e3);
-        especialidades.add(e4);
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+            String linha = leitor.readLine();
+            while (linha != null) {
+                String[] vetor = linha.split(";");
+                Especialidade e = new Especialidade(vetor[1], vetor[2], Integer.valueOf(vetor[0]));
+                especialidades.add(e);
+                linha = leitor.readLine();
+
+            }
+            leitor.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao ler o arquivo");
+        }
+
     }
 
     public static DefaultTableModel getEspecialidadesModel() {
@@ -72,7 +90,7 @@ public class EspecialidadeDAO {
 
     public static void atualizar(Especialidade especialidadeAtualizada) {
         for (Especialidade lista : especialidades) {
-            if (especialidadeAtualizada.getCodigo().equals(lista.getCodigo()) ) {
+            if (especialidadeAtualizada.getCodigo().equals(lista.getCodigo())) {
 
 //                lista.setCodigo(especialidadeAtualizada.getCodigo());
 //                lista.setDescricao(especialidadeAtualizada.getDescricao());
@@ -80,7 +98,6 @@ public class EspecialidadeDAO {
                 int posicao = especialidades.indexOf(lista);
 
                 especialidades.set(posicao, especialidadeAtualizada);
-              
 
             }
         }
@@ -88,6 +105,17 @@ public class EspecialidadeDAO {
 
     public static void gravar(Especialidade dados) {
         especialidades.add(dados);
+        try {
+            BufferedWriter escritor = Files.newBufferedWriter(PATH, StandardOpenOption.APPEND, StandardOpenOption.WRITE);
+            escritor.write(dados.getSeparaPorPontoEVirgula());
+            escritor.newLine();
+            escritor.close();
+
+        } catch (IOException erro) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro");
+        }
+
+        // gravar em arquivos
     }
 
 }
