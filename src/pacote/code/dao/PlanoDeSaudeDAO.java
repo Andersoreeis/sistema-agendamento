@@ -6,6 +6,7 @@ package pacote.code.dao;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,9 +28,12 @@ import pacote.code.model.PlanoDeSaude;
 public class PlanoDeSaudeDAO {
 
     private final static String URL = "C:\\Users\\22282173\\java\\PlanoDeSaude.txt";
+    private final static String URL_TEMP = "C:\\Users\\22282173\\java\\PlanoDeSaudeTemp.txt";
     private final static Path PATH = Paths.get(URL);
-     private String dataFormatada;
-     private DateTimeFormatter formatador;
+    private final static Path PATH_TEMP = Paths.get(URL_TEMP);
+
+    private String dataFormatada;
+    private DateTimeFormatter formatador;
 
     private static ArrayList<PlanoDeSaude> planodesaudes = new ArrayList<>();
 
@@ -48,23 +52,44 @@ public class PlanoDeSaudeDAO {
     }
 
     public static void excluirPlanoDeSaude(Integer codigo) {
+//        BufferedWriter escritor
+
         for (PlanoDeSaude p : planodesaudes) {
             if (codigo == p.getCodigo()) {
                 planodesaudes.remove(p);
                 break;
             }
         }
+            atualizarArquivo();
+    }
+
+    private static void atualizarArquivo() {
+        File arquivoAtual = new File(URL);
+        File arquivoTemp = new File(URL_TEMP);
+        try {
+            arquivoTemp.createNewFile();
+            BufferedWriter escritorTemp = Files.newBufferedWriter(PATH_TEMP, StandardOpenOption.APPEND, StandardOpenOption.WRITE);
+            for (PlanoDeSaude p : planodesaudes) {
+                escritorTemp.write(p.getSeparadoPorVirgula());
+                escritorTemp.newLine();
+            }
+            escritorTemp.close();
+            arquivoAtual.delete();
+            arquivoTemp.renameTo(arquivoAtual);
+
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
     }
 
     public static void criarListaDePlanoDeSaude() {
-        
-          
+
         try {
             BufferedReader leitor = Files.newBufferedReader(PATH);
             String linha = leitor.readLine();
             while (linha != null) {
                 String[] vetor = linha.split(";");
-                PlanoDeSaude p = new PlanoDeSaude(Integer.valueOf(vetor[0]), vetor[1], vetor[2], vetor[3],vetor[4]);
+                PlanoDeSaude p = new PlanoDeSaude(Integer.valueOf(vetor[0]), vetor[1], vetor[2], vetor[3], vetor[4]);
                 planodesaudes.add(p);
                 linha = leitor.readLine();
             }

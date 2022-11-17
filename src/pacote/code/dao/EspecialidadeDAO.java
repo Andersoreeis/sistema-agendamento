@@ -6,6 +6,7 @@ package pacote.code.dao;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,7 +24,9 @@ import pacote.code.model.Especialidade;
 public class EspecialidadeDAO {
 
     private final static String URL = "C:\\Users\\22282173\\java\\Especialidade.txt";
+    private final static String URL_TEMP = "C:\\Users\\22282173\\java\\EspecialidadeTemp.txt";
     private final static Path PATH = Paths.get(URL);
+    private final static Path PATH_TEMP = Paths.get(URL_TEMP);
 
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
 
@@ -33,7 +36,7 @@ public class EspecialidadeDAO {
 
     public static Especialidade getEspecialidade(Integer codigo) {
         for (Especialidade e : especialidades) {
-            if (codigo == e.getCodigo()) {
+            if (codigo.equals(e.getCodigo())) {
                 return e;
             }
 
@@ -42,14 +45,34 @@ public class EspecialidadeDAO {
     }
 
     public static void excluirEspecialidade(Integer codigo) {
-        for (Especialidade i : especialidades) {
-            if (codigo == i.getCodigo()) {
-                especialidades.remove(i);
+        for (Especialidade e : especialidades) {
+            if (codigo.equals(e.getCodigo())) {
+                especialidades.remove(e);
                 break;
             }
-
         }
 
+        atualizarArquivo();
+    }
+
+    private static void atualizarArquivo() {
+        File arquivoAtual = new File(URL);
+        File arquivoTemp = new File(URL_TEMP);
+        try {
+            arquivoTemp.createNewFile();
+            BufferedWriter escritorTemp = Files.newBufferedWriter(PATH_TEMP, StandardOpenOption.APPEND, StandardOpenOption.WRITE);
+            for (Especialidade e : especialidades) {
+                escritorTemp.write(e.getSeparaPorPontoEVirgula());
+                escritorTemp.newLine();
+            }
+            escritorTemp.close();
+            
+            arquivoAtual.delete();
+            arquivoTemp.renameTo(arquivoAtual);
+            
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
     }
 
     // criar uma lista inicial de especialidades
@@ -62,10 +85,9 @@ public class EspecialidadeDAO {
                 Especialidade e = new Especialidade(vetor[1], vetor[2], Integer.valueOf(vetor[0]));
                 especialidades.add(e);
                 linha = leitor.readLine();
-
             }
             leitor.close();
-        } catch (Exception e) {
+        } catch (Exception error) {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao ler o arquivo");
         }
 
