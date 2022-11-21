@@ -101,7 +101,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
             }
         });
         add(btnLimpar);
-        btnLimpar.setBounds(630, 370, 57, 33);
+        btnLimpar.setBounds(630, 360, 70, 31);
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/caneta.png"))); // NOI18N
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +110,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
             }
         });
         add(btnEditar);
-        btnEditar.setBounds(690, 370, 57, 33);
+        btnEditar.setBounds(700, 360, 60, 31);
 
         btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/plus.png"))); // NOI18N
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +119,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
             }
         });
         add(btnAdicionar);
-        btnAdicionar.setBounds(750, 370, 57, 33);
+        btnAdicionar.setBounds(760, 360, 60, 31);
 
         jPanel2.setLayout(null);
 
@@ -165,7 +165,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(btnLimpar1);
-        btnLimpar1.setBounds(630, 370, 57, 33);
+        btnLimpar1.setBounds(630, 370, 30, 31);
 
         btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/caneta.png"))); // NOI18N
         btnEditar1.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +174,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(btnEditar1);
-        btnEditar1.setBounds(690, 370, 57, 33);
+        btnEditar1.setBounds(690, 370, 30, 31);
 
         btnAdicionar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/plus.png"))); // NOI18N
         btnAdicionar1.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +183,7 @@ public class EspecialidadePanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(btnAdicionar1);
-        btnAdicionar1.setBounds(750, 370, 57, 33);
+        btnAdicionar1.setBounds(750, 370, 30, 31);
 
         add(jPanel2);
         jPanel2.setBounds(0, 0, 0, 0);

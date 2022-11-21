@@ -86,7 +86,7 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
         jpanelHomePlanoDeSaude.setLayout(jpanelHomePlanoDeSaudeLayout);
         jpanelHomePlanoDeSaudeLayout.setHorizontalGroup(
             jpanelHomePlanoDeSaudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 808, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
         );
         jpanelHomePlanoDeSaudeLayout.setVerticalGroup(
             jpanelHomePlanoDeSaudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +105,7 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
             }
         });
         jpanel.add(btnLimparPlanoDeSaude);
-        btnLimparPlanoDeSaude.setBounds(630, 370, 57, 33);
+        btnLimparPlanoDeSaude.setBounds(630, 360, 70, 31);
 
         btnEditarPlanoDeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/caneta.png"))); // NOI18N
         btnEditarPlanoDeSaude.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +114,7 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
             }
         });
         jpanel.add(btnEditarPlanoDeSaude);
-        btnEditarPlanoDeSaude.setBounds(690, 370, 57, 33);
+        btnEditarPlanoDeSaude.setBounds(700, 360, 60, 31);
 
         btnAdicionarPlanoDeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/plus.png"))); // NOI18N
         btnAdicionarPlanoDeSaude.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +123,7 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
             }
         });
         jpanel.add(btnAdicionarPlanoDeSaude);
-        btnAdicionarPlanoDeSaude.setBounds(750, 370, 57, 33);
+        btnAdicionarPlanoDeSaude.setBounds(760, 360, 60, 31);
 
         jPanel3.setLayout(null);
 
@@ -150,7 +150,7 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 808, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,7 +169,7 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
             }
         });
         jPanel3.add(btnLimpar1);
-        btnLimpar1.setBounds(630, 370, 57, 33);
+        btnLimpar1.setBounds(630, 370, 30, 31);
 
         btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/caneta.png"))); // NOI18N
         btnEditar1.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +178,7 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
             }
         });
         jPanel3.add(btnEditar1);
-        btnEditar1.setBounds(690, 370, 57, 33);
+        btnEditar1.setBounds(690, 370, 30, 31);
 
         btnAdicionar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/plus.png"))); // NOI18N
         btnAdicionar1.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +187,7 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
             }
         });
         jPanel3.add(btnAdicionar1);
-        btnAdicionar1.setBounds(750, 370, 57, 33);
+        btnAdicionar1.setBounds(750, 370, 30, 31);
 
         jpanel.add(jPanel3);
         jPanel3.setBounds(0, 0, 0, 0);

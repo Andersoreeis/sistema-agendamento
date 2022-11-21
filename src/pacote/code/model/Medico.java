@@ -16,23 +16,33 @@ public class Medico {
     private String email;
     private String telefone;
     private String crm;
+    private String data;
 
     public Medico() {
-
+        gerarCodigo();
     }
 
-    public Medico(Integer codigo, String crm, String nome, String telefone) {
+    public Medico(Integer codigo, String crm, String nome, String telefone, String data) {
         this.codigo = codigo;
         this.crm = crm;
         this.nome = nome;
         this.telefone = telefone;
         this.contador = codigo;
+        this.data = data;
 
     }
 
     public Medico(Integer codigo, String nome, String crm, String email, String telefone, LocalDate dataDeNascimento, Especialidade[] especialidades) {
         formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         dataFormatada = dataDeNascimento.format(formatador);
+        this.codigo = codigo;
+        this.crm = crm;
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.dataDeNascimento = dataDeNascimento;
+        this.especialidades = especialidades;
+        gerarCodigo();
 
     }
 
@@ -115,6 +125,6 @@ public class Medico {
     }
 
     public String getSeparadorComPontoEVirgula() {
-        return this.codigo + ";" + this.nome + ";" + this.email + ";" + this.telefone + ";" + this.telefone + ";" + this.dataFormatada + ";" + getPegarListaDeEspecialidades();
+        return this.codigo + ";" + this.nome + ";" + this.email + ";" + this.telefone + ";" + this.telefone + ";" + this.dataFormatada;
     }
 }

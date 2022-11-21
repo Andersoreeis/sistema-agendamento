@@ -24,9 +24,10 @@ import pacote.code.model.Medico;
  * @author 22282173
  */
 public class MedicoDAO {
-    
-    private final static String URL = "C:\\Users\\ander\\Desktop\\Medico.txt";
-    private final static String URL_TEMP = "C:\\Users\\ander\\Desktop\\MedicoTemp.txt";
+  
+       
+    private final static String URL = "C:\\Users\\22282173\\java\\Medico.txt";
+    private final static String URL_TEMP = "C:\\Users\\22282173\\java\\MedicoTemp.txt";
     private final static Path PATH = Paths.get(URL);
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
      private static ArrayList<Medico> medicos = new ArrayList<>();
@@ -74,13 +75,18 @@ public class MedicoDAO {
         }
     }
        
+       
+        
+  
+       
          public static void criarListaDeMedicos() {
+            
         try {
             BufferedReader leitor = Files.newBufferedReader(PATH);
             String linha = leitor.readLine();
             while (linha != null) {
                 String[] vetor = linha.split(";");
-                Medico m = new Medico(Integer.valueOf(vetor[0]), vetor[1], vetor[2], vetor[3]);
+                Medico m = new Medico(Integer.valueOf(vetor[0]), vetor[1], vetor[2], vetor[3], vetor[4]);
                 medicos.add(m);
                 linha = leitor.readLine();
             }

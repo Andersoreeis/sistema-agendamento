@@ -38,10 +38,10 @@ public class MedicoDialog extends javax.swing.JDialog {
     }
 
     private void prencherFormulario() {
-        jtextfieldCodigo1.setText(medico.getCodigo().toString());
+        jtexfieldCodigo.setText(medico.getCodigo().toString());
         jtextfieldNome.setText(medico.getNome());
         jtextfieldCrm.setText(medico.getCrm());
-        jtextfieldEmail.setText(medico.getEmail());
+        jtexfieldEmail.setText(medico.getEmail());
         jtextfieldTelefone.setText(medico.getTelefone());
     }
 
@@ -54,6 +54,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         }
 
     }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,22 +69,31 @@ public class MedicoDialog extends javax.swing.JDialog {
         jlabelTitleDialog = new javax.swing.JLabel();
         jlabelImgLogo = new javax.swing.JLabel();
         jpanelMainDialog = new javax.swing.JPanel();
-        jtextfieldEmail = new javax.swing.JTextField();
         jlabelValidade = new javax.swing.JLabel();
         jlabelTelefone = new javax.swing.JLabel();
         btnSalvarDiaolog = new javax.swing.JButton();
         btnCancelarDialog = new javax.swing.JButton();
         jformattedData = new javax.swing.JFormattedTextField();
-        jtextfieldCodigo1 = new javax.swing.JTextField();
-        jtextfieldNome = new javax.swing.JTextField();
-        jtextfieldCrm = new javax.swing.JTextField();
-        jtextfieldTelefone = new javax.swing.JTextField();
         jlabelCodigo1 = new javax.swing.JLabel();
         jlabelCrm = new javax.swing.JLabel();
         jlabelEmail = new javax.swing.JLabel();
         jlabelNome2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JlistEspecialidadeMedico = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        JlistListadeEspecialidadades = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
+        JButtonMoverEspecialidade = new javax.swing.JButton();
+        JbuttonRemoverEspecialidade = new javax.swing.JButton();
+        jtextfieldNome = new javax.swing.JTextField();
+        jtexfieldCodigo = new javax.swing.JTextField();
+        jtexfieldEmail = new javax.swing.JTextField();
+        jtextfieldCrm = new javax.swing.JTextField();
+        jtextfieldTelefone = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jpanelHeaderDialog.setBackground(new java.awt.Color(255, 153, 0));
         jpanelHeaderDialog.setLayout(null);
@@ -101,23 +111,13 @@ public class MedicoDialog extends javax.swing.JDialog {
         jpanelMainDialog.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes do Médico"));
         jpanelMainDialog.setLayout(null);
 
-        jtextfieldEmail.setEditable(false);
-        jtextfieldEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
-        jtextfieldEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextfieldEmailActionPerformed(evt);
-            }
-        });
-        jpanelMainDialog.add(jtextfieldEmail);
-        jtextfieldEmail.setBounds(70, 220, 150, 30);
-
         jlabelValidade.setText("DATA");
         jpanelMainDialog.add(jlabelValidade);
-        jlabelValidade.setBounds(250, 200, 210, 16);
+        jlabelValidade.setBounds(470, 90, 60, 16);
 
         jlabelTelefone.setText("TELEFONE");
         jpanelMainDialog.add(jlabelTelefone);
-        jlabelTelefone.setBounds(70, 200, 60, 20);
+        jlabelTelefone.setBounds(50, 90, 60, 20);
 
         btnSalvarDiaolog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/salvar.png"))); // NOI18N
         btnSalvarDiaolog.addActionListener(new java.awt.event.ActionListener() {
@@ -150,47 +150,7 @@ public class MedicoDialog extends javax.swing.JDialog {
             }
         });
         jpanelMainDialog.add(jformattedData);
-        jformattedData.setBounds(250, 220, 70, 30);
-
-        jtextfieldCodigo1.setEditable(false);
-        jtextfieldCodigo1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
-        jtextfieldCodigo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextfieldCodigo1ActionPerformed(evt);
-            }
-        });
-        jpanelMainDialog.add(jtextfieldCodigo1);
-        jtextfieldCodigo1.setBounds(50, 60, 80, 30);
-
-        jtextfieldNome.setEditable(false);
-        jtextfieldNome.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
-        jtextfieldNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextfieldNomeActionPerformed(evt);
-            }
-        });
-        jpanelMainDialog.add(jtextfieldNome);
-        jtextfieldNome.setBounds(70, 120, 150, 30);
-
-        jtextfieldCrm.setEditable(false);
-        jtextfieldCrm.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
-        jtextfieldCrm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextfieldCrmActionPerformed(evt);
-            }
-        });
-        jpanelMainDialog.add(jtextfieldCrm);
-        jtextfieldCrm.setBounds(160, 60, 80, 30);
-
-        jtextfieldTelefone.setEditable(false);
-        jtextfieldTelefone.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
-        jtextfieldTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextfieldTelefoneActionPerformed(evt);
-            }
-        });
-        jpanelMainDialog.add(jtextfieldTelefone);
-        jtextfieldTelefone.setBounds(70, 170, 150, 30);
+        jformattedData.setBounds(470, 110, 70, 30);
 
         jlabelCodigo1.setText("CODIGO");
         jpanelMainDialog.add(jlabelCodigo1);
@@ -202,38 +162,119 @@ public class MedicoDialog extends javax.swing.JDialog {
 
         jlabelEmail.setText("EMAIL");
         jpanelMainDialog.add(jlabelEmail);
-        jlabelEmail.setBounds(70, 150, 50, 20);
+        jlabelEmail.setBounds(210, 90, 50, 20);
 
-        jlabelNome2.setText("NOME");
+        jlabelNome2.setText("NOME DO(A) MÉDICO(A)");
         jpanelMainDialog.add(jlabelNome2);
-        jlabelNome2.setBounds(70, 100, 50, 20);
+        jlabelNome2.setBounds(260, 40, 150, 20);
+
+        JlistEspecialidadeMedico.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
+        JlistEspecialidadeMedico.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(JlistEspecialidadeMedico);
+
+        jpanelMainDialog.add(jScrollPane1);
+        jScrollPane1.setBounds(260, 190, 150, 100);
+
+        jLabel1.setText("ESPECIALIDADE DO MÉDICO");
+        jpanelMainDialog.add(jLabel1);
+        jLabel1.setBounds(260, 170, 160, 16);
+
+        JlistListadeEspecialidadades.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
+        JlistListadeEspecialidadades.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(JlistListadeEspecialidadades);
+
+        jpanelMainDialog.add(jScrollPane2);
+        jScrollPane2.setBounds(60, 190, 130, 100);
+
+        jLabel2.setText("LISTA DE ESPECIALIDADE");
+        jpanelMainDialog.add(jLabel2);
+        jLabel2.setBounds(60, 170, 140, 16);
+
+        JButtonMoverEspecialidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/right-arrow (1).png"))); // NOI18N
+        jpanelMainDialog.add(JButtonMoverEspecialidade);
+        JButtonMoverEspecialidade.setBounds(200, 190, 50, 40);
+
+        JbuttonRemoverEspecialidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/excluir (4).png"))); // NOI18N
+        JbuttonRemoverEspecialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbuttonRemoverEspecialidadeActionPerformed(evt);
+            }
+        });
+        jpanelMainDialog.add(JbuttonRemoverEspecialidade);
+        JbuttonRemoverEspecialidade.setBounds(200, 250, 50, 40);
+
+        jtextfieldNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextfieldNomeActionPerformed(evt);
+            }
+        });
+        jpanelMainDialog.add(jtextfieldNome);
+        jtextfieldNome.setBounds(260, 60, 190, 30);
+
+        jtexfieldCodigo.setEditable(false);
+        jtexfieldCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtexfieldCodigoActionPerformed(evt);
+            }
+        });
+        jpanelMainDialog.add(jtexfieldCodigo);
+        jtexfieldCodigo.setBounds(50, 60, 90, 30);
+
+        jtexfieldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtexfieldEmailActionPerformed(evt);
+            }
+        });
+        jpanelMainDialog.add(jtexfieldEmail);
+        jtexfieldEmail.setBounds(210, 110, 200, 30);
+
+        jtextfieldCrm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextfieldCrmActionPerformed(evt);
+            }
+        });
+        jpanelMainDialog.add(jtextfieldCrm);
+        jtextfieldCrm.setBounds(160, 60, 90, 30);
+
+        jtextfieldTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextfieldTelefoneActionPerformed(evt);
+            }
+        });
+        jpanelMainDialog.add(jtextfieldTelefone);
+        jtextfieldTelefone.setBounds(50, 110, 140, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jpanelHeaderDialog, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+                .addComponent(jpanelHeaderDialog, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(40, 46, Short.MAX_VALUE)
-                    .addComponent(jpanelMainDialog, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 66, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jpanelMainDialog, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jpanelHeaderDialog, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 376, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 124, Short.MAX_VALUE)
-                    .addComponent(jpanelMainDialog, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 12, Short.MAX_VALUE)))
+                .addGap(26, 26, 26)
+                .addComponent(jpanelMainDialog, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(762, 450));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jformattedDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jformattedDataActionPerformed
@@ -248,7 +289,7 @@ public class MedicoDialog extends javax.swing.JDialog {
     private void btnSalvarDiaologActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDiaologActionPerformed
         // TODO add your handling code here:
 
-        if (jtextfieldNome.getText().isBlank() || jtextfieldCrm.getText().isBlank() || jtextfieldEmail.getText().isBlank() || jtextfieldTelefone.getText().isBlank() == true) {
+        if (jtextfieldNome.getText().isBlank() || jtextfieldCrm.getText().isBlank() || jtexfieldEmail.getText().isBlank() || jtextfieldTelefone.getText().isBlank() == true) {
 
             JOptionPane.showMessageDialog(this, "Por favor insira os caracteres necessários");
         } else {
@@ -261,17 +302,21 @@ public class MedicoDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnSalvarDiaologActionPerformed
 
-    private void jtextfieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextfieldEmailActionPerformed
+    private void JbuttonRemoverEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbuttonRemoverEspecialidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtextfieldEmailActionPerformed
-
-    private void jtextfieldCodigo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextfieldCodigo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtextfieldCodigo1ActionPerformed
+    }//GEN-LAST:event_JbuttonRemoverEspecialidadeActionPerformed
 
     private void jtextfieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextfieldNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextfieldNomeActionPerformed
+
+    private void jtexfieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtexfieldCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtexfieldCodigoActionPerformed
+
+    private void jtexfieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtexfieldEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtexfieldEmailActionPerformed
 
     private void jtextfieldCrmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextfieldCrmActionPerformed
         // TODO add your handling code here:
@@ -283,21 +328,21 @@ public class MedicoDialog extends javax.swing.JDialog {
     private void editar() {
         medico.setNome(jtextfieldNome.getText());
         medico.setCrm(jtextfieldCrm.getText());
-        medico.setEmail(jtextfieldEmail.getText());
+        medico.setEmail(jtexfieldEmail.getText());
         medico.setTelefone(jtextfieldTelefone.getText());
         medico.setDataFormatada(jformattedData.getText());
         MedicoDAO.atualizar(medico);
         JOptionPane.showMessageDialog(this, "Gravado Com sucesso", " Plano De Saúde", JOptionPane.INFORMATION_MESSAGE);
-
         dispose();
 
     }
+    
 
     private void adicionar() {
         Medico NovoMedico = new Medico();
         NovoMedico.setNome(jtextfieldNome.getText());
         NovoMedico.setCrm(jtextfieldCrm.getText());
-        NovoMedico.setEmail(jtextfieldEmail.getText());
+        NovoMedico.setEmail(jtexfieldEmail.getText());
         NovoMedico.setTelefone(jtextfieldTelefone.getText());
         NovoMedico.setDataFormatada(jformattedData.getText());
         MedicoDAO.gravar(NovoMedico);
@@ -305,8 +350,16 @@ public class MedicoDialog extends javax.swing.JDialog {
         dispose();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JButtonMoverEspecialidade;
+    private javax.swing.JButton JbuttonRemoverEspecialidade;
+    private javax.swing.JList<String> JlistEspecialidadeMedico;
+    private javax.swing.JList<String> JlistListadeEspecialidadades;
     private javax.swing.JButton btnCancelarDialog;
     private javax.swing.JButton btnSalvarDiaolog;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JFormattedTextField jformattedData;
     private javax.swing.JLabel jlabelCodigo1;
     private javax.swing.JLabel jlabelCrm;
@@ -318,9 +371,9 @@ public class MedicoDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jlabelValidade;
     private javax.swing.JPanel jpanelHeaderDialog;
     private javax.swing.JPanel jpanelMainDialog;
-    private javax.swing.JTextField jtextfieldCodigo1;
+    private javax.swing.JTextField jtexfieldCodigo;
+    private javax.swing.JTextField jtexfieldEmail;
     private javax.swing.JTextField jtextfieldCrm;
-    private javax.swing.JTextField jtextfieldEmail;
     private javax.swing.JTextField jtextfieldNome;
     private javax.swing.JTextField jtextfieldTelefone;
     // End of variables declaration//GEN-END:variables

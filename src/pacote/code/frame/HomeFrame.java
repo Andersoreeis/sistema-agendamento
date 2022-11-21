@@ -465,9 +465,9 @@ public class HomeFrame extends javax.swing.JFrame {
     }
        private void initPanelsMedico(){
            medicopanel = new MedicoPanel();
-           medicopanel.setBounds(x, y, WIDTH, HEIGHT);
+           medicopanel.setBounds(-1, y, width, height);
            getContentPane().add(medicopanel);
-           medicopanel.setVisible(true);
+           medicopanel.setVisible(false);
        }
    
    

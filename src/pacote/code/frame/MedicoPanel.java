@@ -57,6 +57,9 @@ public class MedicoPanel extends javax.swing.JPanel {
         btnEditar1 = new javax.swing.JButton();
         btnAdicionar1 = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(0, 0));
+        setLayout(null);
+
         jpanel.setLayout(null);
 
         jpanelHomeMedico.setBackground(new java.awt.Color(255, 255, 255));
@@ -82,17 +85,20 @@ public class MedicoPanel extends javax.swing.JPanel {
         jpanelHomeMedico.setLayout(jpanelHomeMedicoLayout);
         jpanelHomeMedicoLayout.setHorizontalGroup(
             jpanelHomeMedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+            .addGroup(jpanelHomeMedicoLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 15, Short.MAX_VALUE))
         );
         jpanelHomeMedicoLayout.setVerticalGroup(
             jpanelHomeMedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpanelHomeMedicoLayout.createSequentialGroup()
-                .addGap(0, 23, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 25, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jpanel.add(jpanelHomeMedico);
-        jpanelHomeMedico.setBounds(0, 10, 820, 350);
+        jpanelHomeMedico.setBounds(30, 10, 820, 350);
+        jpanelHomeMedico.getAccessibleContext().setAccessibleDescription("");
 
         btnLimparMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/excluir (1).png"))); // NOI18N
         btnLimparMedico.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +107,7 @@ public class MedicoPanel extends javax.swing.JPanel {
             }
         });
         jpanel.add(btnLimparMedico);
-        btnLimparMedico.setBounds(630, 370, 30, 31);
+        btnLimparMedico.setBounds(640, 360, 60, 31);
 
         btnEditarMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/caneta.png"))); // NOI18N
         btnEditarMedico.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +116,7 @@ public class MedicoPanel extends javax.swing.JPanel {
             }
         });
         jpanel.add(btnEditarMedico);
-        btnEditarMedico.setBounds(690, 370, 30, 31);
+        btnEditarMedico.setBounds(700, 360, 60, 31);
 
         btnAdicionarMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/plus.png"))); // NOI18N
         btnAdicionarMedico.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +125,7 @@ public class MedicoPanel extends javax.swing.JPanel {
             }
         });
         jpanel.add(btnAdicionarMedico);
-        btnAdicionarMedico.setBounds(750, 370, 30, 31);
+        btnAdicionarMedico.setBounds(760, 360, 70, 31);
 
         jPanel3.setLayout(null);
 
@@ -188,26 +194,11 @@ public class MedicoPanel extends javax.swing.JPanel {
         jpanel.add(jPanel3);
         jPanel3.setBounds(0, 0, 0, 0);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        add(jpanel);
+        jpanel.setBounds(0, 0, 830, 431);
+
+        getAccessibleContext().setAccessibleName("");
+        getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimparMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparMedicoActionPerformed
@@ -243,6 +234,9 @@ public class MedicoPanel extends javax.swing.JPanel {
         //       PlanoDeSaudeDialog planoDeSaudeDialog = new PlanoDeSaudeDialog(null, true, OperacaoEnum.Adicionar);
         //        planoDeSaudeDialog.setVisible(true);
         //        prencherTabela();
+        MedicoDialog medicodialog = new MedicoDialog(null, true, OperacaoEnum.Adicionar);
+        medicodialog.setVisible(true);
+        prencherTabela();
     }//GEN-LAST:event_btnAdicionarMedicoActionPerformed
 
     private void btnLimpar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar1ActionPerformed
@@ -255,6 +249,15 @@ public class MedicoPanel extends javax.swing.JPanel {
 
     private void btnAdicionar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar1ActionPerformed
         // TODO add your handling code here:
+        
+//         PlanoDeSaudeDialog planoDeSaudeDialog = new PlanoDeSaudeDialog(null, true, OperacaoEnum.Adicionar);
+//        planoDeSaudeDialog.setVisible(true);
+//        prencherTabela();
+
+        MedicoDialog medicodialog = new MedicoDialog(null, true, OperacaoEnum.Adicionar);
+        medicodialog.setVisible(true);
+        prencherTabela();
+                
     }//GEN-LAST:event_btnAdicionar1ActionPerformed
     private void excluirMedico() {
 
@@ -303,8 +306,8 @@ public class MedicoPanel extends javax.swing.JPanel {
         tabelaMedico.getColumnModel().getColumn(0).setPreferredWidth(100);
         tabelaMedico.getColumnModel().getColumn(1).setPreferredWidth(200);
         tabelaMedico.getColumnModel().getColumn(2).setPreferredWidth(200);
-        tabelaMedico.getColumnModel().getColumn(3).setPreferredWidth(200);
-        tabelaMedico.getColumnModel().getColumn(3).setPreferredWidth(210);
+        tabelaMedico.getColumnModel().getColumn(3).setPreferredWidth(330);
+        tabelaMedico.getColumnModel().getColumn(3).setPreferredWidth(270);
         tabelaMedico.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
     }

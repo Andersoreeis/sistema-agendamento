@@ -27,6 +27,7 @@ import pacote.code.model.PlanoDeSaude;
  */
 public class PlanoDeSaudeDAO {
 
+
     private final static String URL = "C:\\Users\\22282173\\java\\PlanoDeSaude.txt";
     private final static String URL_TEMP = "C:\\Users\\22282173\\java\\PlanoDeSaudeTemp.txt";
     private final static Path PATH = Paths.get(URL);
