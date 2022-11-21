@@ -114,9 +114,6 @@ public class EspecialidadeDAO {
         for (Especialidade lista : especialidades) {
             if (especialidadeAtualizada.getCodigo().equals(lista.getCodigo())) {
 
-//                lista.setCodigo(especialidadeAtualizada.getCodigo());
-//                lista.setDescricao(especialidadeAtualizada.getDescricao());
-//                lista.setNome(especialidadeAtualizada.getNome()); 
                 int posicao = especialidades.indexOf(lista);
 
                 especialidades.set(posicao, especialidadeAtualizada);

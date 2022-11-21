@@ -102,7 +102,7 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         jlabelImgLogo.setBounds(30, 20, 40, 40);
 
         getContentPane().add(jpanelHeaderDialog);
-        jpanelHeaderDialog.setBounds(0, 0, 800, 70);
+        jpanelHeaderDialog.setBounds(0, 0, 750, 70);
 
         jpanelMainDialog.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes do Plano de Saúde"));
         jpanelMainDialog.setLayout(null);
@@ -198,9 +198,9 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         jformattedData.setBounds(400, 130, 70, 30);
 
         getContentPane().add(jpanelMainDialog);
-        jpanelMainDialog.setBounds(40, 90, 700, 310);
+        jpanelMainDialog.setBounds(40, 90, 650, 310);
 
-        setSize(new java.awt.Dimension(760, 450));
+        setSize(new java.awt.Dimension(762, 450));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

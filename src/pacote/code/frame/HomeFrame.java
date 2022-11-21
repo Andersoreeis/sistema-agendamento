@@ -21,6 +21,7 @@ public class HomeFrame extends javax.swing.JFrame {
      */
     private EspecialidadePanel especialidadesPanel;
     private PlanoDeSaudePanel planosaudepanel;
+    private MedicoPanel medicopanel;
     int x = 30;
     int y = 180;
     int height = 479;
@@ -34,6 +35,8 @@ public class HomeFrame extends javax.swing.JFrame {
         initComponents();
         initPanelsEspecialidade();
          initPanelsPlanoDeSaude();
+         initPanelsMedico();
+         
         String jframeLogo = "/image/agenda-logo.png";
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource(jframeLogo)));
         
@@ -357,6 +360,10 @@ public class HomeFrame extends javax.swing.JFrame {
     private void btnMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicosActionPerformed
         // TODO add your handling code here:
           btnHome.setVisible(true);
+          jpanelHome.setVisible(false);
+          medicopanel.setVisible(true);
+            planosaudepanel.setVisible(false);
+            especialidadesPanel.setVisible(false);
     }//GEN-LAST:event_btnMedicosActionPerformed
 
     private void btnEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEspecialidadeActionPerformed
@@ -365,6 +372,7 @@ public class HomeFrame extends javax.swing.JFrame {
           jpanelHome.setVisible(false);
            especialidadesPanel.setVisible(true);
            planosaudepanel.setVisible(false);
+             medicopanel.setVisible(false);
     }//GEN-LAST:event_btnEspecialidadeActionPerformed
 
     private void btnPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanoDeSaudeActionPerformed
@@ -374,6 +382,7 @@ public class HomeFrame extends javax.swing.JFrame {
           jpanelHome.setVisible(false);
           planosaudepanel.setVisible(true);
           especialidadesPanel.setVisible(false);
+            medicopanel.setVisible(false);
          
     }//GEN-LAST:event_btnPlanoDeSaudeActionPerformed
 
@@ -452,7 +461,14 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(planosaudepanel);
         planosaudepanel.setVisible(false);
         
+        
     }
+       private void initPanelsMedico(){
+           medicopanel = new MedicoPanel();
+           medicopanel.setBounds(x, y, WIDTH, HEIGHT);
+           getContentPane().add(medicopanel);
+           medicopanel.setVisible(true);
+       }
    
    
     
