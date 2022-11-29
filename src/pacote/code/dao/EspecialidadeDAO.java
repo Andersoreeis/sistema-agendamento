@@ -4,6 +4,7 @@
  */
 package pacote.code.dao;
 
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,8 +14,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import jdk.jshell.JShell;
 import pacote.code.model.Especialidade;
 
 /**
@@ -66,10 +69,10 @@ public class EspecialidadeDAO {
                 escritorTemp.newLine();
             }
             escritorTemp.close();
-            
+
             arquivoAtual.delete();
             arquivoTemp.renameTo(arquivoAtual);
-            
+
         } catch (Exception error) {
             error.printStackTrace();
         }
@@ -137,4 +140,17 @@ public class EspecialidadeDAO {
         // gravar em arquivos
     }
 
+    public static DefaultListModel<String> fazerListaDeEspecialidades() {
+
+        
+        DefaultListModel<String> listaDeEspecialidadesModel = new DefaultListModel<String>();
+        for (Especialidade e : getEspecialidades()) {
+
+            listaDeEspecialidadesModel.addElement(e.getNome());
+           
+
+        }
+        return listaDeEspecialidadesModel;
+
+    }
 }

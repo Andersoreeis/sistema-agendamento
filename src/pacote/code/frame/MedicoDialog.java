@@ -4,8 +4,12 @@
  */
 package pacote.code.frame;
 
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import pacote.code.dao.EspecialidadeDAO;
 import pacote.code.dao.MedicoDAO;
+import pacote.code.model.Especialidade;
 import pacote.code.model.Medico;
 import pacote.code.model.OperacaoEnum;
 
@@ -17,7 +21,10 @@ public class MedicoDialog extends javax.swing.JDialog {
 
     private Medico medico;
     private OperacaoEnum operacao;
-
+    Especialidade especialidade = new Especialidade();
+     DefaultListModel<String> listaDeEspecialidadesModel = new DefaultListModel<String>();
+     ArrayList<Especialidade> especialidades = new ArrayList<>();
+        
     /**
      * Creates new form MedicoDialog
      */
@@ -26,6 +33,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         initComponents();
         this.operacao = operacao;
         prencherTitulo();
+        listarModel();
     }
 
     public MedicoDialog(java.awt.Frame parent, boolean modal, Medico medico, OperacaoEnum operacao) {
@@ -35,6 +43,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         this.operacao = operacao;
         prencherTitulo();
         prencherFormulario();
+        listarModel();
     }
 
     private void prencherFormulario() {
@@ -54,6 +63,12 @@ public class MedicoDialog extends javax.swing.JDialog {
         }
 
     }
+    private void listarModel(){
+         JlistListadeEspecialidadades.setModel(EspecialidadeDAO.fazerListaDeEspecialidades());
+    }
+
+    
+  
   
 
     /**
@@ -199,6 +214,11 @@ public class MedicoDialog extends javax.swing.JDialog {
         jLabel2.setBounds(60, 170, 140, 16);
 
         JButtonMoverEspecialidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/code/frame/right-arrow (1).png"))); // NOI18N
+        JButtonMoverEspecialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JButtonMoverEspecialidadeActionPerformed(evt);
+            }
+        });
         jpanelMainDialog.add(JButtonMoverEspecialidade);
         JButtonMoverEspecialidade.setBounds(200, 190, 50, 40);
 
@@ -325,6 +345,10 @@ public class MedicoDialog extends javax.swing.JDialog {
     private void jtextfieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextfieldTelefoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextfieldTelefoneActionPerformed
+
+    private void JButtonMoverEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonMoverEspecialidadeActionPerformed
+    JlistEspecialidadeMedico.getSelectedValue();        // TODO add your handling code here:
+    }//GEN-LAST:event_JButtonMoverEspecialidadeActionPerformed
     private void editar() {
         medico.setNome(jtextfieldNome.getText());
         medico.setCrm(jtextfieldCrm.getText());
@@ -349,6 +373,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(this, "Gravado Com sucesso", " Plano de Saúde", JOptionPane.INFORMATION_MESSAGE);
         dispose();
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JButtonMoverEspecialidade;
     private javax.swing.JButton JbuttonRemoverEspecialidade;

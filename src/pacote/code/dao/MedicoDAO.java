@@ -24,8 +24,9 @@ import pacote.code.model.Medico;
  * @author 22282173
  */
 public class MedicoDAO {
-  
-       
+   ArrayList<Especialidade> listaDeEspecialidaes = new ArrayList<Especialidade>();
+                Especialidade  e1 = new Especialidade();
+               
     private final static String URL = "C:\\Users\\22282173\\java\\Medico.txt";
     private final static String URL_TEMP = "C:\\Users\\22282173\\java\\MedicoTemp.txt";
     private final static Path PATH = Paths.get(URL);
@@ -141,4 +142,7 @@ public class MedicoDAO {
 
         // gravar em arquivos
     }
+               
+                
+                
 }
