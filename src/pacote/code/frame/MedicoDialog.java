@@ -5,9 +5,11 @@
 package pacote.code.frame;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import pacote.code.dao.EspecialidadeDAO;
+import static pacote.code.dao.EspecialidadeDAO.getEspecialidades;
 import pacote.code.dao.MedicoDAO;
 import pacote.code.model.Especialidade;
 import pacote.code.model.Medico;
@@ -22,9 +24,9 @@ public class MedicoDialog extends javax.swing.JDialog {
     private Medico medico;
     private OperacaoEnum operacao;
     Especialidade especialidade = new Especialidade();
-     DefaultListModel<String> listaDeEspecialidadesModel = new DefaultListModel<String>();
-     ArrayList<Especialidade> especialidades = new ArrayList<>();
-        
+    DefaultListModel<String> listaDeEspecialidadesModel = new DefaultListModel<String>();
+    ArrayList<Especialidade> especialidades = new ArrayList<>();
+
     /**
      * Creates new form MedicoDialog
      */
@@ -63,13 +65,11 @@ public class MedicoDialog extends javax.swing.JDialog {
         }
 
     }
-    private void listarModel(){
-         JlistListadeEspecialidadades.setModel(EspecialidadeDAO.fazerListaDeEspecialidades());
-    }
 
-    
-  
-  
+    private void listarModel() {
+        JlistListadeEspecialidadades.setModel(EspecialidadeDAO.fazerListaDeEspecialidades());
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -323,7 +323,20 @@ public class MedicoDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalvarDiaologActionPerformed
 
     private void JbuttonRemoverEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbuttonRemoverEspecialidadeActionPerformed
-        // TODO add your handling code here:
+        String str = JlistEspecialidadeMedico.getSelectedValue();
+        if (JlistEspecialidadeMedico.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Nenhum dado selecionado", "Oops..", 1);
+        } else {
+            int value = JlistEspecialidadeMedico.getSelectedIndex();
+             
+            listaDeEspecialidadesModel.addElement(str);
+            listaDeEspecialidadesModel.remove(value);
+           
+            DefaultListModel<String> listaModelpassarEspecialidades = new DefaultListModel<>();
+          
+            JlistEspecialidadeMedico.setModel(listaModelpassarEspecialidades);
+            JlistEspecialidadeMedico.setModel(listaModelpassarEspecialidades);
+        }         // TODO add your handling code here:
     }//GEN-LAST:event_JbuttonRemoverEspecialidadeActionPerformed
 
     private void jtextfieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextfieldNomeActionPerformed
@@ -347,7 +360,25 @@ public class MedicoDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jtextfieldTelefoneActionPerformed
 
     private void JButtonMoverEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonMoverEspecialidadeActionPerformed
-    JlistEspecialidadeMedico.getSelectedValue();        // TODO add your handling code here:
+
+        String str = JlistListadeEspecialidadades.getSelectedValue();
+        DefaultListModel<String> listaModelpassarEspecialidades = new DefaultListModel<>();
+        if (JlistListadeEspecialidadades.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Nenhum dado selecionado", "Oops..", 1);
+        } else {
+             
+            if (listaDeEspecialidadesModel.contains(str) == false) {
+                int value = JlistListadeEspecialidadades.getSelectedIndex();
+                listaDeEspecialidadesModel.addElement(str);
+                JlistEspecialidadeMedico.setModel(listaDeEspecialidadesModel);
+                JlistListadeEspecialidadades.setModel(EspecialidadeDAO.fazerListaDeEspecialidades());
+            } else {
+                JOptionPane.showMessageDialog(null, "Especialidade já adicionada!", "Oops..", 1);
+            }
+
+        }
+        // TODO add your handling code here:
+
     }//GEN-LAST:event_JButtonMoverEspecialidadeActionPerformed
     private void editar() {
         medico.setNome(jtextfieldNome.getText());
@@ -360,7 +391,6 @@ public class MedicoDialog extends javax.swing.JDialog {
         dispose();
 
     }
-    
 
     private void adicionar() {
         Medico NovoMedico = new Medico();
@@ -373,7 +403,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(this, "Gravado Com sucesso", " Plano de Saúde", JOptionPane.INFORMATION_MESSAGE);
         dispose();
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JButtonMoverEspecialidade;
     private javax.swing.JButton JbuttonRemoverEspecialidade;

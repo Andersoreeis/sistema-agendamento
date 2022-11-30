@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +33,7 @@ public class EspecialidadeDAO {
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
 
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
+     
 
     public static ArrayList<Especialidade> getEspecialidades() {
         return especialidades;
@@ -139,11 +141,11 @@ public class EspecialidadeDAO {
 
         // gravar em arquivos
     }
-
+ 
     public static DefaultListModel<String> fazerListaDeEspecialidades() {
 
-        
         DefaultListModel<String> listaDeEspecialidadesModel = new DefaultListModel<String>();
+      
         for (Especialidade e : getEspecialidades()) {
 
             listaDeEspecialidadesModel.addElement(e.getNome());
@@ -153,4 +155,7 @@ public class EspecialidadeDAO {
         return listaDeEspecialidadesModel;
 
     }
-}
+       
+    }   
+   
+            

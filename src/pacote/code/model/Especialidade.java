@@ -3,6 +3,7 @@ package pacote.code.model;
 import javax.swing.JOptionPane;
 
 public class Especialidade {
+
     private static int contador = 100;
     private Integer codigo;
     private String nome;
@@ -17,13 +18,13 @@ public class Especialidade {
     public Especialidade(String nome, String descricao, Integer codigo) {
         this.codigo = codigo;
         this.nome = nome;
-        this.descricao = descricao; 
-         this.contador = codigo;
-         
+        this.descricao = descricao;
+        this.contador = codigo;
+
     }
 
     public Especialidade() {
-         gerarCodigo();
+        gerarCodigo();
 
     }
 
@@ -52,28 +53,29 @@ public class Especialidade {
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
-    
-    
 
     public String getDescricao() {
         return descricao;
     }
 
-    public  int getContador() {
+    public int getContador() {
         return contador;
     }
 
     public Integer getCodigo() {
         return codigo;
     }
-    public void gerarCodigo(){
+
+    public void gerarCodigo() {
         this.contador++;
         this.codigo = contador;
     }
-    
-    public String getSeparaPorPontoEVirgula(){
-        return this.codigo + ";" + this.nome + ";" + this.descricao;
-}
-    
 
+    public String getSeparaPorPontoEVirgula() {
+        return this.codigo + ";" + this.nome + ";" + this.descricao;
+    }
+
+    public String toString() {
+        return null;
+    }
 }
