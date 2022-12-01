@@ -78,7 +78,18 @@ public class MedicoDAO {
        
        
         
-  
+       public static ArrayList<Especialidade> separarCodigos(String linha) {
+        String[] vetor = linha.split(";");
+
+        int codigoEspecialidade = 6;
+
+        ArrayList<Especialidade> codigos = new ArrayList<>();
+        while (codigoEspecialidade < vetor.length) {
+            codigos.add(EspecialidadeDAO.getEspecialidade(Integer.valueOf(vetor[codigoEspecialidade])));
+            codigoEspecialidade++;
+        }
+        return codigos;
+    }
        
          public static void criarListaDeMedicos() {
             
@@ -87,7 +98,7 @@ public class MedicoDAO {
             String linha = leitor.readLine();
             while (linha != null) {
                 String[] vetor = linha.split(";");
-                Medico m = new Medico(Integer.valueOf(vetor[0]), vetor[1], vetor[2], vetor[3], vetor[4]);
+                Medico m = new Medico(Integer.valueOf(vetor[0]), vetor[1], vetor[2], vetor[3], vetor[4], vetor[5], separarCodigos(linha));
                 medicos.add(m);
                 linha = leitor.readLine();
             }

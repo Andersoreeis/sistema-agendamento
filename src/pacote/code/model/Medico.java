@@ -8,7 +8,7 @@ public class Medico {
 
     private static int contador = 100;
     private Integer codigo;
-    private Especialidade[] especialidades;
+    private ArrayList<Especialidade> especialidades;
     private LocalDate dataDeNascimento;
     private DateTimeFormatter formatador;
     private String dataFormatada;
@@ -32,7 +32,7 @@ public class Medico {
 
     }
 
-    public Medico(Integer codigo, String nome, String crm, String email, String telefone, LocalDate dataDeNascimento, Especialidade[] especialidades) {
+    public Medico(Integer codigo, String nome, String crm, String email, String telefone, String dataDeNascimentoString, ArrayList<Especialidade> especialidades) {
         formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         dataFormatada = dataDeNascimento.format(formatador);
         this.codigo = codigo;
@@ -40,7 +40,7 @@ public class Medico {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
-        this.dataDeNascimento = dataDeNascimento;
+        this.dataFormatada = dataDeNascimentoString;
         this.especialidades = especialidades;
         gerarCodigo();
 
@@ -54,11 +54,11 @@ public class Medico {
         this.nome = nome;
     }
 
-    public Especialidade[] getEspecialidade() {
+    public ArrayList<Especialidade> getEspecialidade() {
         return especialidades;
     }
 
-    public void setEspecialidade(Especialidade[] especialidade) {
+    public void setEspecialidade(ArrayList<Especialidade> especialidade) {
         this.especialidades = especialidade;
     }
 
@@ -112,19 +112,22 @@ public class Medico {
 
     int i = 0;
 
-    public String getPegarListaDeEspecialidades() {
+    public String listaDeCodigos(ArrayList<Especialidade> array) {
+        ArrayList<String> Rodarcodigo = new  ArrayList<String>();
+        for(Especialidade e : array)
+            Rodarcodigo.add(e.getCodigo().toString());
         
-
-        while (i < especialidades.length) {
-            Especialidade especialidade = new Especialidade();
-            return especialidade.toString();
-        }
-        return null;
         
-
+        return String.join( ";", Rodarcodigo);
     }
 
     public String getSeparadorComPontoEVirgula() {
-        return this.codigo + ";" + this.nome + ";" + this.email + ";" + this.telefone + ";" + this.telefone + ";" + this.dataFormatada;
+        return this.codigo + ";" 
+                + this.nome+ ";" 
+                + this.email + ";" 
+                + this.telefone + ";" 
+                + this.telefone + ";" 
+                + this.dataFormatada + ";" 
+                + listaDeCodigos(especialidades);
     }
 }
