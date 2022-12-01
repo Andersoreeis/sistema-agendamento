@@ -139,8 +139,9 @@ public class MedicoDAO {
         }
     }
             
-                public static void gravar(Medico dados) {
+    public static void gravar(Medico dados) {
         medicos.add(dados);
+        
         try {
             BufferedWriter escritor = Files.newBufferedWriter(PATH, StandardOpenOption.APPEND, StandardOpenOption.WRITE);
             escritor.write(dados.getSeparadorComPontoEVirgula());

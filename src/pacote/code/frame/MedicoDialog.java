@@ -26,6 +26,7 @@ public class MedicoDialog extends javax.swing.JDialog {
     Especialidade especialidade = new Especialidade();
     DefaultListModel<String> listaDeEspecialidadesModel = new DefaultListModel<String>();
     ArrayList<Especialidade> especialidades = new ArrayList<>();
+    DefaultListModel<String> listaModelpassarEspecialidades = new DefaultListModel<>();
 
     /**
      * Creates new form MedicoDialog
@@ -184,11 +185,6 @@ public class MedicoDialog extends javax.swing.JDialog {
         jlabelNome2.setBounds(260, 40, 150, 20);
 
         JlistEspecialidadeMedico.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
-        JlistEspecialidadeMedico.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(JlistEspecialidadeMedico);
 
         jpanelMainDialog.add(jScrollPane1);
@@ -199,11 +195,6 @@ public class MedicoDialog extends javax.swing.JDialog {
         jLabel1.setBounds(260, 170, 160, 16);
 
         JlistListadeEspecialidadades.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 0)));
-        JlistListadeEspecialidadades.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(JlistListadeEspecialidadades);
 
         jpanelMainDialog.add(jScrollPane2);
@@ -323,20 +314,21 @@ public class MedicoDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalvarDiaologActionPerformed
 
     private void JbuttonRemoverEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbuttonRemoverEspecialidadeActionPerformed
+        //DefaultListModel<String> listaMedicoModel = new DefaultListModel<>();
+        
         String str = JlistEspecialidadeMedico.getSelectedValue();
-        if (JlistEspecialidadeMedico.getSelectedIndex() == -1) {
+        int value = JlistEspecialidadeMedico.getSelectedIndex();
+        System.out.println("VALUE ->>>>>>" + value);
+        
+        if (value == -1) {
             JOptionPane.showMessageDialog(null, "Nenhum dado selecionado", "Oops..", 1);
         } else {
-            int value = JlistEspecialidadeMedico.getSelectedIndex();
-             
-            listaDeEspecialidadesModel.addElement(str);
+            System.out.println(listaModelpassarEspecialidades.size());
+            //listaModelpassarEspecialidades.remove(value);
             listaDeEspecialidadesModel.remove(value);
-           
-            DefaultListModel<String> listaModelpassarEspecialidades = new DefaultListModel<>();
-          
-            JlistEspecialidadeMedico.setModel(listaModelpassarEspecialidades);
-            JlistEspecialidadeMedico.setModel(listaModelpassarEspecialidades);
-        }         // TODO add your handling code here:
+            //JlistEspecialidadeMedico.setModel(listaModelpassarEspecialidades);
+            JlistEspecialidadeMedico.setModel(listaDeEspecialidadesModel);
+        }        
     }//GEN-LAST:event_JbuttonRemoverEspecialidadeActionPerformed
 
     private void jtextfieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextfieldNomeActionPerformed
@@ -362,11 +354,12 @@ public class MedicoDialog extends javax.swing.JDialog {
     private void JButtonMoverEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonMoverEspecialidadeActionPerformed
 
         String str = JlistListadeEspecialidadades.getSelectedValue();
-        DefaultListModel<String> listaModelpassarEspecialidades = new DefaultListModel<>();
+        //DefaultListModel<String> listaModelpassarEspecialidades = new DefaultListModel<>();
+        
         if (JlistListadeEspecialidadades.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Nenhum dado selecionado", "Oops..", 1);
         } else {
-             
+
             if (listaDeEspecialidadesModel.contains(str) == false) {
                 int value = JlistListadeEspecialidadades.getSelectedIndex();
                 listaDeEspecialidadesModel.addElement(str);
@@ -399,6 +392,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         NovoMedico.setEmail(jtexfieldEmail.getText());
         NovoMedico.setTelefone(jtextfieldTelefone.getText());
         NovoMedico.setDataFormatada(jformattedData.getText());
+        
         MedicoDAO.gravar(NovoMedico);
         JOptionPane.showMessageDialog(this, "Gravado Com sucesso", " Plano de Saúde", JOptionPane.INFORMATION_MESSAGE);
         dispose();

@@ -8,7 +8,7 @@ public class Medico {
 
     private static int contador = 100;
     private Integer codigo;
-    private ArrayList<Especialidade> especialidades;
+    private ArrayList<Especialidade> especialidades = new ArrayList<>();
     private LocalDate dataDeNascimento;
     private DateTimeFormatter formatador;
     private String dataFormatada;
@@ -113,9 +113,12 @@ public class Medico {
     int i = 0;
 
     public String listaDeCodigos(ArrayList<Especialidade> array) {
+        
         ArrayList<String> Rodarcodigo = new  ArrayList<String>();
-        for(Especialidade e : array)
+        
+        for(Especialidade e : array){
             Rodarcodigo.add(e.getCodigo().toString());
+        }
         
         
         return String.join( ";", Rodarcodigo);
