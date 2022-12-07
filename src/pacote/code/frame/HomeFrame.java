@@ -37,7 +37,7 @@ public class HomeFrame extends javax.swing.JFrame {
          initPanelsPlanoDeSaude();
          initPanelsMedico();
          
-        String jframeLogo = "/image/agenda-logo.png";
+        String jframeLogo = "/pacote/code/image/agenda-logo.png";
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource(jframeLogo)));
         
         

@@ -295,7 +295,7 @@ public class MedicoPanel extends javax.swing.JPanel {
 
     private void prencherTabela() {
 
-        tabelaMedico.setModel(MedicoDAO.getMedicosModel());
+        tabelaMedico.setModel(MedicoDAO.getMedicoModel());
         ajustarTabela();
 
     }

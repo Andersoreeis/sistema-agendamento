@@ -6,46 +6,72 @@ import java.util.ArrayList;
 
 public class Medico {
 
-    private static int contador = 100;
-    private Integer codigo;
-    private ArrayList<Especialidade> especialidades = new ArrayList<>();
-    private LocalDate dataDeNascimento;
-    private DateTimeFormatter formatador;
-    private String dataFormatada;
-    private String nome;
-    private String email;
-    private String telefone;
-    private String crm;
-    private String data;
-
     public Medico() {
         gerarCodigo();
     }
 
-    public Medico(Integer codigo, String crm, String nome, String telefone, String data) {
+    public Medico(Integer codigo, String crm, String nome, String telefone, String email, String dataNascimento, ArrayList<Especialidade> especialidades) {
+
         this.codigo = codigo;
         this.crm = crm;
         this.nome = nome;
         this.telefone = telefone;
-        this.contador = codigo;
-        this.data = data;
-
-    }
-
-    public Medico(Integer codigo, String nome, String crm, String email, String telefone, String dataDeNascimentoString, ArrayList<Especialidade> especialidades) {
-        formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        dataFormatada = dataDeNascimento.format(formatador);
-        this.codigo = codigo;
-        this.crm = crm;
-        this.nome = nome;
         this.email = email;
-        this.telefone = telefone;
-        this.dataFormatada = dataDeNascimentoString;
+        this.dataFormatada = dataNascimento;
         this.especialidades = especialidades;
-        gerarCodigo();
+        this.contador = codigo;
 
     }
 
+    public Medico(String crm, String nome, String telefone, String email, LocalDate dataNascimento, ArrayList<Especialidade> especialidades) {
+
+        formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        dataFormatada = dataNascimento.format(formatador);
+
+        this.codigo = codigo;
+        this.crm = crm;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.dataNascimento = dataNascimento;
+        this.especialidades = especialidades;
+        this.contador = codigo;
+
+        gerarCodigo();
+    }
+
+    public String getDataFormatada() {
+        return dataFormatada;
+    }
+
+    private Integer codigo;
+    private String crm;
+    private String nome;
+    private String telefone;
+    private String email;
+    private LocalDate dataNascimento;
+    private DateTimeFormatter formatador;
+    private String dataFormatada;
+    private ArrayList<Especialidade> especialidades;
+    private static int contador = 100;
+
+    public void gerarCodigo() {
+        Medico.contador++;
+        this.codigo = getContador();
+    }
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public int getContador() {
+        return contador;
+    }
+
+    public void setDataFormatada(String data) {
+        this.dataFormatada = data;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -58,16 +84,8 @@ public class Medico {
         return especialidades;
     }
 
-    public void setEspecialidade(ArrayList<Especialidade> especialidade) {
-        this.especialidades = especialidade;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEspecialidade(ArrayList<Especialidade> especialidades) {
+        this.especialidades = especialidades;
     }
 
     public String getTelefone() {
@@ -78,6 +96,14 @@ public class Medico {
         this.telefone = telefone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getCrm() {
         return crm;
     }
@@ -86,51 +112,24 @@ public class Medico {
         this.crm = crm;
     }
 
-    public Integer getCodigo() {
-        return codigo;
-    }
-
-    public static int getContador() {
-        return contador;
-    }
-
-    public LocalDate getDataDeNascimento() {
-        return dataDeNascimento;
-    }
-
-    public void setDataDeNascimento(LocalDate dataDeNascimento) {
-        this.dataDeNascimento = dataDeNascimento;
-    }
-     public void setDataFormatada(String dataFormatada) {
-        this.dataFormatada = dataFormatada;
-    }
-
-    public void gerarCodigo() {
-        this.contador++;
-        this.codigo = contador;
-    }
-
-    int i = 0;
-
-    public String listaDeCodigos(ArrayList<Especialidade> array) {
-        
-        ArrayList<String> Rodarcodigo = new  ArrayList<String>();
-        
+    public String arrayParaString(ArrayList<Especialidade> array) {
+        ArrayList<String> codigos = new ArrayList<String>();
         for(Especialidade e : array){
-            Rodarcodigo.add(e.getCodigo().toString());
+            codigos.add(e.getCodigo().toString());
         }
         
-        
-        return String.join( ";", Rodarcodigo);
+        return String.join(";", codigos);
     }
 
-    public String getSeparadorComPontoEVirgula() {
-        return this.codigo + ";" 
-                + this.nome+ ";" 
-                + this.email + ";" 
-                + this.telefone + ";" 
-                + this.telefone + ";" 
-                + this.dataFormatada + ";" 
-                + listaDeCodigos(especialidades);
+    public String getSerializacao() {
+
+        return this.codigo + ";"
+                + this.crm + ";"
+                + this.nome + ";"
+                + this.telefone + ";"
+                + this.email + ";"
+                + this.dataFormatada + ";"
+                + arrayParaString(this.especialidades);
     }
+
 }
