@@ -437,6 +437,7 @@ public class MedicoDialog extends javax.swing.JDialog {
                 medicoEspecialidades.addElement(percorrer);
             }
             jListMedico.setModel(medicoEspecialidades);
+
         
 
     }

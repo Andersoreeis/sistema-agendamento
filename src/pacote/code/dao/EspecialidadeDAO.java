@@ -16,8 +16,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
 
-    private final static String URL = "C:\\Users\\ander\\Desktop\\Especialidade.txt";
-    private final static String URL_TEMP = "C:\\Users\\ander\\Desktop\\Especialidade_temp.txt";
+    private final static String URL = "C:\\Users\\22282173\\java\\Especialidade.txt";
+    private final static String URL_TEMP = "C:\\Users\\22282173\\java\\Especialidade_temp.txt";
     private final static Path PATH = Paths.get(URL);
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
 
@@ -115,9 +115,11 @@ public class EspecialidadeDAO {
         DefaultListModel<Especialidade> especialidadesLista = new DefaultListModel<Especialidade>();
         for(Especialidade percorrer : getEspecialidades()){
             especialidadesLista.addElement(percorrer);
+            especialidadesLista.toString();
         }
-        
         return especialidadesLista;
+        
+        
     }
 
     public static DefaultTableModel getEspecialidadesModel() {

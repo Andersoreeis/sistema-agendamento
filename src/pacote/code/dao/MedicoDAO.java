@@ -20,8 +20,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class MedicoDAO {
 
-    private final static String URL = "C:\\Users\\ander\\Desktop\\Medico.txt";
-    private final static String URL_TEMP = "C:\\Users\\ander\\Desktop\\Medico_temp.txt";
+    private final static String URL = "C:\\Users\\22282173\\java\\Medico.txt";
+    private final static String URL_TEMP = "C:\\Users\\22282173\\java\\Medico_temp.txt";
     private final static Path PATH = Paths.get(URL);
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
 

@@ -70,12 +70,14 @@ public class Especialidade {
         this.contador++;
         this.codigo = contador;
     }
+      public String toString(){
+        return this.nome;
+    }
+
 
     public String getSeparaPorPontoEVirgula() {
         return this.codigo + ";" + this.nome + ";" + this.descricao;
     }
 
-    public String toString() {
-        return null;
-    }
+   
 }
